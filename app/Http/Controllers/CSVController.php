@@ -34,7 +34,7 @@ class CSVController extends Controller
             $data[] = [
                     'seller' => $record['0'],
                     'listing_id' => $record['1'],
-                    'description' => $record['2'],
+                    'description' => utf8_encode($record['2']),
                     'x_z_asin' => $record['3'],
                     'upc' => $upc,
                     'boo_asin' => $record['5'],
