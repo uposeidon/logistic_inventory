@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.admin')
 @section('content')
 <div class="my-3 p-3 bg-white rounded box-shadow">
    <h6 class="border-bottom border-gray p-3">{{ __('New Supplier CSV') }}</h6>
@@ -16,7 +16,7 @@
          </ul>
       </div>
    @endif
-   <form method="post" enctype="multipart/form-data" action="{{ route('user.csv.store') }}">
+   <form method="post" enctype="multipart/form-data" action="{{ route('admin.csv.store') }}">
       @csrf
       <div class="form-group row">
          <label for="email" class="col-sm-2 col-form-label">Upload CSV File</label>

@@ -42,7 +42,12 @@
           <li class="nav-item @if (Route::currentRouteName() == 'admin.users.create') active @endif">
             <a class="nav-link" href="{{ route('admin.users.create') }}">New User</a>
           </li>
-          
+          <li class="nav-item @if (in_array(Route::currentRouteName(),['admin.supplier.index','admin.supplier.show'])) active @endif">
+            <a class="nav-link" href="{{ route('admin.supplier.index') }}">Suppliers</a>
+          </li>
+          <li class="nav-item @if (Route::currentRouteName() == 'admin.csv.create') active @endif">
+            <a class="nav-link" href="{{ route('admin.csv.create') }}">New Supplier CSV</a>
+          </li>
         </ul>
         <ul class="navbar-nav">
             <li class="nav-item">

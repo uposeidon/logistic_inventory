@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Supplier;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -21,7 +22,7 @@ class CSVController extends Controller
     
     public function create()
     {
-        return view('csv.create');
+        return view('admin.csv.create');
     }
 
     public function store(Request $request)
@@ -31,7 +32,7 @@ class CSVController extends Controller
         ]); 
         
         if($validator->fails()) {
-            return redirect()->route('user.csv.create')
+            return redirect()->route('admin.csv.create')
                         ->withErrors($validator)
                         ->withInput();
         }
@@ -63,6 +64,6 @@ class CSVController extends Controller
         foreach($arrayData as $insertionData){
             Supplier::insertOrIgnore($insertionData);
         }
-        return redirect()->route('user.csv.create')->with('success', 'File Uploaded and Processed Successfully!');
+        return redirect()->route('admin.csv.create')->with('success', 'File Uploaded and Processed Successfully!');
     }
 }

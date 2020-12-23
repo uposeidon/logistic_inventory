@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Supplier;
 use Illuminate\Http\Request;
 
@@ -20,11 +21,11 @@ class SupplierController extends Controller
     public function index()
     {
         $suppliers = Supplier::paginate(100);
-        return view('supplier.index', compact('suppliers'));
+        return view('admin.supplier.index', compact('suppliers'));
     }
 
     public function show(Supplier $supplier)
     {
-        return view('supplier.show', compact('supplier'));
+        return view('admin.supplier.show', compact('supplier'));
     }
 }

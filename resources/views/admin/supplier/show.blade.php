@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.admin')
 @section('content')
 <div class="my-3 p-3 bg-white rounded box-shadow">
    <h6 class="border-bottom border-gray p-3 ">{{ __('View Supplier') }}</h6>

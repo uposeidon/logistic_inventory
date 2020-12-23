@@ -37,12 +37,6 @@
           <li class="nav-item @if (Route::currentRouteName() == 'user.dashboard') active @endif">
             <a class="nav-link" href="{{ route('user.dashboard') }}">Dashboard</a>
           </li>
-          <li class="nav-item @if (in_array(Route::currentRouteName(),['user.supplier.index','user.supplier.show'])) active @endif">
-            <a class="nav-link" href="{{ route('user.supplier.index') }}">Suppliers</a>
-          </li>
-          <li class="nav-item @if (Route::currentRouteName() == 'user.csv.create') active @endif">
-            <a class="nav-link" href="{{ route('user.csv.create') }}">New Supplier CSV</a>
-          </li>
         </ul>
         <ul class="navbar-nav">
             <li class="nav-item">

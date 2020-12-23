@@ -30,11 +30,12 @@ Route::namespace('Admin')->prefix('/admin')->middleware(['check_user_role:' . \A
     Route::put('/users/{id}', 'UserController@update')->name('admin.users.update');
     Route::delete('/users/{id}', 'UserController@destroy')->name('admin.users.destroy');
 
+    Route::get('/suppliers', 'SupplierController@index')->name('admin.supplier.index');
+    Route::get('/suppliers/{supplier}', 'SupplierController@show')->name('admin.supplier.show');
+    Route::get('/csv/create', 'CSVController@create')->name('admin.csv.create');
+    Route::post('/csv', 'CSVController@store')->name('admin.csv.store');
+
 });
 
 // Routes for front user
 Route::get('/user/dashboard', 'HomeController@index')->name('user.dashboard');
-Route::get('/user/suppliers', 'SupplierController@index')->name('user.supplier.index');
-Route::get('/user/suppliers/{supplier}', 'SupplierController@show')->name('user.supplier.show');
-Route::get('/user/csv/create', 'CSVController@create')->name('user.csv.create');
-Route::post('/user/csv', 'CSVController@store')->name('user.csv.store');

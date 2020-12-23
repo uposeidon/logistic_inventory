@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.admin')
 @section('content')
 <div class="my-3 row p-3 bg-white rounded box-shadow">
    <div class="col-12">
@@ -7,7 +7,7 @@
          <table class="table table-bordered">
             <thead>
                <tr>
-                  <th>#</th>
+                  <th>ID</th>
                   <th>X-Z ASIN</th>
                   <th>UPC</th>
                   <th>B00 ASIN</th>
@@ -32,7 +32,7 @@
                   <td>{{ $supplier->package_id }}</td>
                   <td>{{ $supplier->created_at }}</td>
                   <td>
-                     <a href="{{ route('user.supplier.show', $supplier->id) }}">View</a>
+                     <a href="{{ route('admin.supplier.show', $supplier->id) }}">View</a>
                   </td>
                </tr>
                @endforeach
