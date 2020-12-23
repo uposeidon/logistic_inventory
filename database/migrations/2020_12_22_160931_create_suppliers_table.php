@@ -19,7 +19,7 @@ class CreateSuppliersTable extends Migration
             $table->string('seller');
             $table->bigInteger('listing_id');
             $table->longText('description');
-            $table->string('x_z_asin');
+            $table->string('x_z_asin')->unique();
             $table->bigInteger('upc')->nullable();
             $table->string('boo_asin');
             $table->tinyInteger('quantity');
