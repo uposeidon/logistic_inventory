@@ -2,7 +2,24 @@
 @section('content')
 <div class="my-3 row p-3 bg-white rounded box-shadow">
    <div class="col-12">
-      <h6 class="border-bottom border-gray p-3 ">{{ __('Suppliers') }}</h6>
+      <h6 class="border-bottom border-gray p-3 ">{{ __('Origin Manifest') }}</h6>
+      <div class="row form-group">
+         <div class="col-12">
+            <form action="" method="get">
+            <div class="form-row">
+               <div class="form-group col-md-4">
+                  <input type="text" value="{{ app('request')->input('search') }}" class="form-control" name="search" />
+               </div>
+               <div class="form-group col-md-4">
+                  <input type="text" autocomplete="off" value="{{ app('request')->input('created_at') }}" class="datepicker form-control" name="created_at">
+               </div>
+               <div class="form-group col-md-4">
+                  <button type="submit" class="btn btn-light">Search</button>
+               </div>
+            </div>
+            </form>
+         </div>
+      </div>
       <div class="table-responsive">
          <table class="table table-bordered">
             <thead>
@@ -43,7 +60,7 @@
 </div>
 <div class="row">
    <div class="col-12">
-      {{ $suppliers->links() }}
+      {{ $suppliers->appends($_GET)->links() }}
    </div>
 </div>
    

@@ -21,6 +21,9 @@
     <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/offcanvas.css') }}" rel="stylesheet">
+    @if (Route::currentRouteName() == 'admin.supplier.index')
+      <link href="{{ asset('css/datepicker.css') }}" rel="stylesheet">
+    @endif
     
 </head>
 <body class="bg-light">
@@ -43,10 +46,10 @@
             <a class="nav-link" href="{{ route('admin.users.create') }}">New User</a>
           </li>
           <li class="nav-item @if (in_array(Route::currentRouteName(),['admin.supplier.index','admin.supplier.show'])) active @endif">
-            <a class="nav-link" href="{{ route('admin.supplier.index') }}">Suppliers</a>
+            <a class="nav-link" href="{{ route('admin.supplier.index') }}">Origin Manifest</a>
           </li>
           <li class="nav-item @if (Route::currentRouteName() == 'admin.csv.create') active @endif">
-            <a class="nav-link" href="{{ route('admin.csv.create') }}">New Supplier CSV</a>
+            <a class="nav-link" href="{{ route('admin.csv.create') }}">Upload Manifest</a>
           </li>
         </ul>
         <ul class="navbar-nav">
@@ -73,9 +76,19 @@
     <main role="main" class="container">
         @yield('content')
     </div>
-    <script src="{{ asset('js/jquery-3.2.1.slim.min.js') }}" defer></script>   
-    <script src="{{ asset('js/offcanvas.js') }}" defer></script>
-
-    
+   
+    <script src="{{ asset('js/jquery-3.2.1.slim.min.js') }}"></script>   
+    <script src="{{ asset('js/bootstrap.min.js') }}" ></script> 
+    <script src="{{ asset('js/offcanvas.js') }}" ></script>
+    @if (Route::currentRouteName() == 'admin.supplier.index')
+    <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+    <script>
+      $(document).ready(function() {
+        $('.datepicker').datepicker({
+          autoclose : true
+        });
+      });
+    </script>
+    @endif
 </body>
 </html>
