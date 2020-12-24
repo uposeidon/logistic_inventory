@@ -8,13 +8,13 @@
             <form action="" method="get">
             <div class="form-row">
                <div class="form-group col-md-4">
-                  <input type="text" value="{{ app('request')->input('search') }}" class="form-control" name="search" />
+                  <input type="text" placeholder="search by X-Z ASIN or UPC" value="{{ app('request')->input('search') }}" class="form-control" name="search" />
                </div>
                <div class="form-group col-md-4">
-                  <input type="text" autocomplete="off" value="{{ app('request')->input('created_at') }}" class="datepicker form-control" name="created_at">
+                  <input type="text" autocomplete="off" value="@if(app('request')->input('created_at')){{ app('request')->input('created_at') }}@else{{ date('m/d/yy') }}@endif" class="datepicker form-control" name="created_at">
                </div>
                <div class="form-group col-md-4">
-                  <button type="submit" class="btn btn-light">Search</button>
+                  <button type="submit" class="btn btn-primary">Search</button>
                </div>
             </div>
             </form>

@@ -84,8 +84,10 @@
     <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
     <script>
       $(document).ready(function() {
-        $('.datepicker').datepicker({
-          autoclose : true
+       $('.datepicker').datepicker({
+          autoclose : true,
+          todayHighlight: true,
+          setDate: "0"
         });
       });
     </script>
