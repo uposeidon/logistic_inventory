@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 <div class="my-3 p-3 bg-white rounded box-shadow">
-   <h6 class="border-bottom border-gray p-3">{{ __('New Supplier CSV') }}</h6>
+   <h6 class="border-bottom border-gray p-3">{{ __('Upload Manifest') }}</h6>
    @if (session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
