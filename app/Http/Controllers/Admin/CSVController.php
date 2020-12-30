@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Supplier;
+use App\SuppliersFiles;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -38,6 +39,18 @@ class CSVController extends Controller
         }
         
         $file = $request->file('csv');
+        $file_name = $request->file('csv')->getClientOriginalName();
+        $path = $request->file('csv')->storeAs('suppliers', $request->file('csv')->getClientOriginalName());
+
+        $suppliersFile = SuppliersFiles::create([
+            'file_name' => $file_name,
+            'status' => 'new',
+            'total_records'=> 0,
+            'process_records' => 0,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+       
         $records = array_map('str_getcsv',file($file));
         unset($records[0]);
        
@@ -55,6 +68,7 @@ class CSVController extends Controller
                 'ext_msrp' => $record['8'],
                 'package_id' => $record['9'],
                 'warehouse' => $record['10'],
+                'suppliers_files_id' => $suppliersFile->id,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
     
