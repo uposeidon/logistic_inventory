@@ -13,109 +13,6 @@ class CreateSupplierAlgopixTable extends Migration
      */
     public function up()
     {
-        /*
-
-        Schema design fields 
-        itemDetails->aid;
-        itemDetails->ids->UPC[];
-        itemDetails->ids->EAN[];
-        itemDetails->ids->ASIN[];
-        itemDetails->ids->ASIN[];
-        
-        itemDetails->titles->en;
-        
-        itemDetails->titles->en;
-        itemDetails->model;
-        itemDetails->color;
-        itemDetails->brand;
-        itemDetails->imageUrl;
-        itemDetails->description;
-
-        itemDetails->itemDimensions->width->unit;
-        itemDetails->itemDimensions->width->unit;
-
-        itemDetails->itemDimensions->length->unit;
-        itemDetails->itemDimensions->length->unit;
-
-        itemDetails->itemDimensions->height->unit;
-        itemDetails->itemDimensions->height->unit;
-
-        itemDetails->itemDimensions->weight->unit;
-        itemDetails->itemDimensions->weight->unit;
-
-        itemDetails->packageDimensions->width->unit;
-        itemDetails->packageDimensions->width->unit;
-
-        itemDetails->packageDimensions->length->unit;
-        itemDetails->packageDimensions->length->unit;
-
-        itemDetails->packageDimensions->height->unit;
-        itemDetails->packageDimensions->height->unit;
-
-        itemDetails->packageDimensions->weight->unit;
-        itemDetails->packageDimensions->weight->unit;
-
-        itemDetails->msrp->currencyCode;
-        itemDetails->msrp->amount;
-        
-        demand->US;
-        
-        offers[]->marketBrand;
-        offers[]->countryCode;
-        offers[]->offers->NEW->marketPrice->currencyCode;
-        offers[]->offers->NEW->marketPrice->amount;
-        
-        offers[]->offers->NEW->marketPlaceFees->currencyCode;
-        offers[]->offers->NEW->marketPlaceFees->amount;
-
-        offers[]->offers->NEW->fbaSellingFees->currencyCode;
-        offers[]->offers->NEW->fbaSellingFees->amount;
-
-        offers[]->offers->NEW->taxAmount->currencyCode;
-        offers[]->offers->NEW->taxAmount->amount;
-
-        offers[]->offers->NEW->listingUrl;
-
-        offers[]->marketSpecificData->marketSpecificProductTitle;
-        offers[]->marketSpecificData->objectType;
-
-        offers[]->marketSpecificData->estimatedSalesRevenues->currencyCode;
-        offers[]->marketSpecificData->estimatedSalesRevenues->amount;
-
-        offers[]->marketSpecificData->estimatedUnitSold;
-
-        offers[]->marketSpecificData->competition->level;
-        offers[]->marketSpecificData->competition->numberOfOffers;
-
-        offers[]->marketSpecificData->competition->lowestOfferFromReputableSeller->price->currencyCode;
-        offers[]->marketSpecificData->competition->lowestOfferFromReputableSeller->price->amount;
-        offers[]->marketSpecificData->competition->lowestOfferFromReputableSeller->sellerRating->positiveFeedbackRating;
-        offers[]->marketSpecificData->competition->lowestOfferFromReputableSeller->sellerRating->numberOfSellerRatings;
-        
-        offers[]->marketSpecificData->competition->lowestOffer->price->currencyCode;
-        offers[]->marketSpecificData->competition->lowestOffer->price->amount;
-        offers[]->marketSpecificData->competition->lowestOffer->sellerRating->positiveFeedbackRating;
-        offers[]->marketSpecificData->competition->lowestOffer->sellerRating->numberOfSellerRatings;
-        
-        offers[]->marketSpecificData->competition->buyBoxOffering->price->currencyCode;
-        offers[]->marketSpecificData->competition->buyBoxOffering->price->amount;
-        offers[]->marketSpecificData->competition->buyBoxOffering->sellerRating->positiveFeedbackRating;
-        offers[]->marketSpecificData->competition->buyBoxOffering->sellerRating->numberOfSellerRatings;
-        
-        
-        offers[]->marketSpecificData->competition->amazonOfferState;
-
-        offers[]->marketSpecificData->localAsin;
-
-        offers[]->marketSpecificData->amazonCategories[]->name;
-        offers[]->marketSpecificData->amazonCategories[]->id;
-        offers[]->marketSpecificData->amazonCategories[]->bestSellerRanking;
-
-        offers[]->marketSpecificData->soldViaFBA;
-        offers[]->marketSpecificData->numberOfOffersSoldViaFBA;
-
-        offers[]->imageSet[] element
-        */
         Schema::create('supplier_algopix', function (Blueprint $table) {
             $table->id();
 
@@ -158,66 +55,61 @@ class CreateSupplierAlgopixTable extends Migration
         
             $table->tinyInteger('demand')->nullable();
 
+            //o means offers 
+            $table->string('o_market_brand')->nullable()->comment('o for Offers');
+            $table->enum('o_country_code', ['US'])->nullable()->comment('o for Offers');
 
+            $table->enum('o_new_market_price_currency',['USD'])->nullable()->comment('o for Offers');
+            $table->float('o_new_market_price_amount')->nullable()->comment('o for Offers');
+            
+            $table->enum('o_new_market_place_fees_currency',['USD'])->nullable()->comment('o for Offers');
+            $table->float('o_new_market_place_fees_amount')->nullable()->comment('o for Offers');
 
-        // offers[]->marketBrand;
+            $table->enum('o_new_fba_selling_fees_currency',['USD'])->nullable()->comment('o for Offers');
+            $table->float('o_new_fba_selling_fees_amount')->nullable()->comment('o for Offers');
 
-        // offers[]->countryCode;
-        // offers[]->offers->NEW->marketPrice->currencyCode;
-        // offers[]->offers->NEW->marketPrice->amount;
+            $table->enum('o_new_tax_amount_currency',['USD'])->nullable()->comment('o for Offers');
+            $table->float('o_new_tax_amount_amount')->nullable()->comment('o for Offers');
+
+            $table->string('o_new_listing_url')->nullable()->comment('o for Offers');
+
+            //msd means market specific data
+            $table->string('o_msd_product_title')->nullable()->comment('o for Offers, msd for Market Specific Data');
+            $table->string('o_msd_object_type')->nullable()->comment('o for Offers, msd for Market Specific Data');
+            $table->enum('o_msd_estimated_sales_revenues_currency',['USD'])->nullable()->comment('o for Offers, msd for Market Specific Data');
+            $table->float('o_msd_estimated_sales_revenues_amount')->nullable()->comment('o for Offers, msd for Market Specific Data');
+            $table->tinyInteger('o_msd_estimated_unit_sold')->nullable()->comment('o for Offers, msd for Market Specific Data');
+
+            //c means competition
+            $table->enum('o_msd_c_level', ['HIGH', 'MEDIUM', 'LOW'])->nullable()->comment('o for Offers, msd for Market Specific Data, c for Competition');
+            $table->tinyInteger('o_msd_c_number_of_offers')->nullable()->comment('o for Offers, msd for Market Specific Data, c for Competition');
         
-        // offers[]->offers->NEW->marketPlaceFees->currencyCode;
-        // offers[]->offers->NEW->marketPlaceFees->amount;
-
-        // offers[]->offers->NEW->fbaSellingFees->currencyCode;
-        // offers[]->offers->NEW->fbaSellingFees->amount;
-
-        // offers[]->offers->NEW->taxAmount->currencyCode;
-        // offers[]->offers->NEW->taxAmount->amount;
-
-        // offers[]->offers->NEW->listingUrl;
-
-        // offers[]->marketSpecificData->marketSpecificProductTitle;
-        // offers[]->marketSpecificData->objectType;
-
-        // offers[]->marketSpecificData->estimatedSalesRevenues->currencyCode;
-        // offers[]->marketSpecificData->estimatedSalesRevenues->amount;
-
-        // offers[]->marketSpecificData->estimatedUnitSold;
-
-        // offers[]->marketSpecificData->competition->level;
-        // offers[]->marketSpecificData->competition->numberOfOffers;
-
-        // offers[]->marketSpecificData->competition->lowestOfferFromReputableSeller->price->currencyCode;
-        // offers[]->marketSpecificData->competition->lowestOfferFromReputableSeller->price->amount;
-        // offers[]->marketSpecificData->competition->lowestOfferFromReputableSeller->sellerRating->positiveFeedbackRating;
-        // offers[]->marketSpecificData->competition->lowestOfferFromReputableSeller->sellerRating->numberOfSellerRatings;
+            //lowest_ofrs means lowest Offer From Reputable Seller
+            $table->enum('o_msd_c_lofrs_price_currency_code', ['USD'])->nullable()->comment('o for Offers, msd for Market Specific Data, c for Competition, lofrs for Lowest Offer From Reputable Seller');
+            $table->float('o_msd_c_lofrs_price_amount')->nullable()->comment('o for Offers, msd for Market Specific Data, c for Competition, lofrs for Lowest Offer From Reputable Seller');
+            $table->string('o_msd_c_lofrs_srating_positive_feedback_rating')->nullable()->comment('o for Offers, msd for Market Specific Data, c for Competition, lofrs for Lowest Offer From Reputable Seller, srating for Seller Rating');
+            $table->tinyInteger('o_msd_c_lofrs_srating_number_of_seller_ratings')->nullable()->comment('o for Offers, msd for Market Specific Data, c for Competition, lofrs for Lowest Offer From Reputable Seller, srating for Seller Rating');
         
-        // offers[]->marketSpecificData->competition->lowestOffer->price->currencyCode;
-        // offers[]->marketSpecificData->competition->lowestOffer->price->amount;
-        // offers[]->marketSpecificData->competition->lowestOffer->sellerRating->positiveFeedbackRating;
-        // offers[]->marketSpecificData->competition->lowestOffer->sellerRating->numberOfSellerRatings;
-        
-        // offers[]->marketSpecificData->competition->buyBoxOffering->price->currencyCode;
-        // offers[]->marketSpecificData->competition->buyBoxOffering->price->amount;
-        // offers[]->marketSpecificData->competition->buyBoxOffering->sellerRating->positiveFeedbackRating;
-        // offers[]->marketSpecificData->competition->buyBoxOffering->sellerRating->numberOfSellerRatings;
-        
-        
-        // offers[]->marketSpecificData->competition->amazonOfferState;
+            $table->enum('o_msd_c_lowest_offer_price_currency_code', ['USD'])->nullable()->comment('o for Offers, msd for Market Specific Data, c for Competition');
+            $table->float('o_msd_c_lowest_offer_price_amount')->nullable()->comment('o for Offers, msd for Market Specific Data, c for Competition');
+            $table->string('o_msd_c_lowest_offer_srating_positive_feedback_rating')->nullable()->comment('o for Offers, msd for Market Specific Data, c for Competition, srating for Seller Rating');
+            $table->tinyInteger('o_msd_c_lowest_offer_srating_number_of_seller_ratings')->nullable()->comment('o for Offers, msd for Market Specific Data, c for Competition, srating for Seller Rating');
 
-        // offers[]->marketSpecificData->localAsin;
+            $table->enum('o_msd_c_buy_box_offering_price_currency_code', ['USD'])->nullable()->comment('o for Offers, msd for Market Specific Data, c for Competition');
+            $table->float('o_msd_c_buy_box_offering_price_amount')->nullable()->comment('o for Offers, msd for Market Specific Data, c for Competition');
+            $table->string('o_msd_c_buy_box_offering_srating_positive_feedback_rating')->nullable()->comment('o for Offers, msd for Market Specific Data, c for Competition, srating for Seller Rating');
+            $table->tinyInteger('o_msd_c_buy_box_offering_srating_number_of_seller_ratings')->nullable()->comment('o for Offers, msd for Market Specific Data, c for Competition');
 
-        // offers[]->marketSpecificData->amazonCategories[]->name;
-        // offers[]->marketSpecificData->amazonCategories[]->id;
-        // offers[]->marketSpecificData->amazonCategories[]->bestSellerRanking;
+            $table->string('o_msd_c_amazon_offer_state')->nullable()->comment('o for Offers, msd for Market Specific Data, c for Competition');
+            $table->string('o_msd_local_asin')->nullable()->comment('o for Offers, msd for Market Specific Data');
 
-        // offers[]->marketSpecificData->soldViaFBA;
-        // offers[]->marketSpecificData->numberOfOffersSoldViaFBA;
+            $table->string('o_msd_amazon_category_name')->nullable()->comment('o for Offers, msd for Market Specific Data');
+            $table->string('o_msd_amazon_category_id')->nullable()->comment('o for Offers, msd for Market Specific Data');
+            $table->integer('o_msd_amazon_category_best_seller_ranking')->nullable()->comment('o for Offers, msd for Market Specific Data');
+            $table->string('o_msd_solid_via_fba')->nullable()->comment('o for Offers, msd for Market Specific Data');
+            $table->tinyInteger('o_msd_number_off_offers_sold_via_fba')->nullable()->comment('o for Offers, msd for Market Specific Data');
 
-        // offers[]->imageSet[] element
-
-
+            $table->string('o_image_url')->nullable()->comment('o for Offers');
             
             $table->timestamps();
         });

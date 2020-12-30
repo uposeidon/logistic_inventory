@@ -51,6 +51,10 @@
           <li class="nav-item @if (Route::currentRouteName() == 'admin.csv.create') active @endif">
             <a class="nav-link" href="{{ route('admin.csv.create') }}">Upload Manifest</a>
           </li>
+          <li class="nav-item @if (Route::currentRouteName() == 'admin.analyze.index') active @endif">
+            <a class="nav-link" href="{{ route('admin.analyze.index') }}">Analyze</a>
+          </li>
+          
         </ul>
         <ul class="navbar-nav">
             <li class="nav-item">

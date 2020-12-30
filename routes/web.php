@@ -35,6 +35,8 @@ Route::namespace('Admin')->prefix('/admin')->middleware(['check_user_role:' . \A
     Route::get('/csv/create', 'CSVController@create')->name('admin.csv.create');
     Route::post('/csv', 'CSVController@store')->name('admin.csv.store');
 
+    Route::get('/analyze', 'AnalyzeController@index')->name('admin.analyze.index');
+    Route::get('/download/{id}', 'AnalyzeController@download')->name('admin.analyze.download');
 });
 
 // Routes for front user
