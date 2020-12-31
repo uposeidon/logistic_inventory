@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Supplier;
-use App\SuppliersFiles;
+use App\SupplierFile;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -40,9 +40,9 @@ class CSVController extends Controller
         
         $file = $request->file('csv');
         $file_name = $request->file('csv')->getClientOriginalName();
-        $path = $request->file('csv')->storeAs('suppliers', $request->file('csv')->getClientOriginalName());
-
-        $suppliersFile = SuppliersFiles::create([
+        $request->file('csv')->storeAs('suppliers', $request->file('csv')->getClientOriginalName());
+        
+        $suppliersFile = SupplierFile::create([
             'file_name' => $file_name,
             'status' => 'new',
             'total_records'=> 0,
@@ -74,10 +74,16 @@ class CSVController extends Controller
     
             ];
         }
-        $arrayData = array_chunk($data,500);
+        $arrayData = array_chunk($data,2000);
+        $insertedRecords = 0;
         foreach($arrayData as $insertionData){
-            Supplier::insertOrIgnore($insertionData);
+           $inserted = Supplier::insertOrIgnore($insertionData);
+           $insertedRecords = $insertedRecords + $inserted;
         }
+        $suppliersFile->updated_at = Carbon::now();
+        $suppliersFile->total_records = $insertedRecords;
+        $suppliersFile->save();
+        
         return redirect()->route('admin.csv.create')->with('success', 'File Uploaded and Processed Successfully!');
     }
 }
