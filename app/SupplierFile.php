@@ -16,4 +16,9 @@ class SupplierFile extends Model
     {
         return $this->hasMany('App\Supplier','suppliers_files_id');
     }
+
+    public function supplierAlgopixs()
+    {
+        return $this->hasMany('App\SupplierAlgopix','suppliers_files_id');
+    }
 }

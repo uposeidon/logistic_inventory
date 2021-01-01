@@ -38,6 +38,7 @@ Route::namespace('Admin')->prefix('/admin')->middleware(['check_user_role:' . \A
     Route::get('/analyze', 'AnalyzeController@index')->name('admin.analyze.index');
     Route::put('/analyze/{supplierFile}', 'AnalyzeController@update')->name('admin.analyze.update');
     Route::get('/analyze/{supplierFile}/index', 'AnalyzeController@view')->name('admin.analyze.view');
+    Route::get('/analyze/{supplierFile}/index/{supplierAlgopix}', 'AnalyzeController@show')->name('admin.analyze.show');
 
     Route::get('/download/{supplierFile}', 'AnalyzeController@download')->name('admin.analyze.download');
 });

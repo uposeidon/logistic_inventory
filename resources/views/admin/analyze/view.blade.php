@@ -8,31 +8,31 @@
             <thead>
                <tr>
                   <th>ID</th>
-                  <th>X-Z ASIN</th>
+                  <th>AID</th>
                   <th>UPC</th>
-                  <th>B00 ASIN</th>
-                  <th>Quantity</th>
-                  <th>MSRP</th>
-                  <th>EXT MSRP</th>
-                  <th>Package ID</th>
+                  <th>EAN</th>
+                  <th>ASIN</th>
+                  <th>Model</th>
+                  <th>Brand</th>
+                  <th>MSRP Amount</th>
                   <th>Created At</th>
                   <th>Action</th>
                </tr>
             </thead>
             <tbody>
-               @foreach($suppliers as $supplier)
+               @foreach($supplierAlgopixs as $supplierAlgopix)
                <tr>
-                  <td>{{ $supplier->id }}</td>
-                  <td>{{ $supplier->x_z_asin }}</td>
-                  <td>{{ $supplier->upc }}</td>
-                  <td>{{ $supplier->boo_asin }}</td>
-                  <td>{{ $supplier->quantity }}</td>
-                  <td>{{ $supplier->msrp }}</td>
-                  <td>{{ $supplier->ext_msrp }}</td>
-                  <td>{{ $supplier->package_id }}</td>
-                  <td>{{ $supplier->created_at }}</td>
+                  <td>{{ $supplierAlgopix->id }}</td>
+                  <td>{{ $supplierAlgopix->aid }}</td>
+                  <td>{{ $supplierAlgopix->upc }}</td>
+                  <td>{{ $supplierAlgopix->ean }}</td>
+                  <td>{{ $supplierAlgopix->asin }}</td>
+                  <td>{{ $supplierAlgopix->model }}</td>
+                  <td>{{ $supplierAlgopix->brand }}</td>
+                  <td>{{ $supplierAlgopix->msrp_amount }}</td>
+                  <td>{{ $supplierAlgopix->created_at }}</td>
                   <td>
-                     <a href="">View</a>
+                     <a href="{{ route('admin.analyze.show',[$supplierAlgopix->suppliers_files_id, $supplierAlgopix->id])}}">show full Data</a>
                   </td>
                </tr>
                @endforeach
@@ -43,7 +43,7 @@
 </div>
 <div class="row">
    <div class="col-12">
-      {{ $suppliers->appends($_GET)->links() }}
+      {{ $supplierAlgopixs->appends($_GET)->links() }}
    </div>
 </div>
    
