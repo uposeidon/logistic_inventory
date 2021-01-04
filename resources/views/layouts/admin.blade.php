@@ -23,6 +23,7 @@
     <link href="{{ asset('css/offcanvas.css') }}" rel="stylesheet">
     @if (Route::currentRouteName() == 'admin.supplier.index')
       <link href="{{ asset('css/datepicker.css') }}" rel="stylesheet">
+      <link href="{{ asset('css/bootstrap-icons.css') }}" rel="stylesheet">
     @endif
     
 </head>
