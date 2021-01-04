@@ -24,7 +24,7 @@
          <input type="file" value="" class="form-control" id="csv" name="csv" placeholder="">
          </div>
       </div>
-      <button type="submit" class="btn btn-primary">Create</button>
+      <button type="submit" class="btn btn-primary">Upload</button>
    </form>
 </div>
 @endsection
