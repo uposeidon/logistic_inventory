@@ -15,7 +15,7 @@
                </div>
                <div class="form-group col-md-4">
                   <button type="submit" class="btn btn-primary">Search</button>
-                  <a class="btn btn-primary" href="{{ route('admin.analyze.index') }}">Analyze</a>
+                  <!-- <a class="btn btn-primary" href="{{ route('admin.analyze.index') }}">Analyze</a> -->
                </div>
             </div>
             </form>
