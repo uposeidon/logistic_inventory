@@ -3,6 +3,7 @@
 <div class="my-3 row p-3 bg-white rounded box-shadow">
    <div class="col-12">
       <h6 class="border-bottom border-gray p-3 ">{{ __('Analyze') }}</h6>
+      
       @if (session('success'))
       <div class="alert alert-success">
          {{ session('success') }}
@@ -73,7 +74,8 @@
                   </td>
                   <td>
                      <a href="{{ route('admin.analyze.view', $suppliersFile->id) }}">Analyze Data</a>
-                     <a href="#">Download</a>
+                     <a class="btn @if ($suppliersFile->supplier_algopixs_count == 0) disabled @endif" href="{{ route('admin.analyze.download_result',$suppliersFile->id) }}">Download</a>
+                     
                   </td>
                </tr>
                @endforeach
