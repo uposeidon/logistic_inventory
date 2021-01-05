@@ -15,7 +15,7 @@ class algopix extends Command
      *
      * @var string
      */
-    protected $signature = 'algopix:read';
+    protected $signature = 'algopix:read {limit}';
 
     /**
      * The console command description.
@@ -42,11 +42,12 @@ class algopix extends Command
     public function handle()
     {
         $this->info('Script is started');
-        
-        $supplierFile = SupplierFile::with(['suppliers' => function ($query) {
+        $limit = $this->argument('limit');
+        $supplierFile = SupplierFile::with(['suppliers' => function ($query) use ($limit) {
            $query->where('is_processed',false);
-           $query->limit(2);
+           $query->limit($limit);
         }])->where('status','in-progress')->orderBy('progress_at','asc')->first();
+        
         if(empty($supplierFile)){
             $this->info('There is no in-progress manifest');
             return 0;
@@ -193,7 +194,22 @@ class algopix extends Command
             $supplier->save();
             $supplierFile->increment('process_records',1);
         }
+        $this->checkAndMarkedDone($supplierFile);
         $this->info('Proccessing completed Successfully!');
         return 0;     
+    }
+
+    public function checkAndMarkedDone($supplierFile)
+    {
+        $supplierFile = SupplierFile::withCount(['suppliers' => function ($query) {
+            $query->where('is_processed',false);
+         }])->where('id',$supplierFile->id)->first();
+         if($supplierFile->suppliers_count==0){
+            $supplierFile->status = 'done';
+            $supplierFile->updated_at = Carbon::now();
+            $supplierFile->save();
+            $this->info('This manifest have completed successfully, it marked as done.');
+            return 0;
+         }
     }
 }

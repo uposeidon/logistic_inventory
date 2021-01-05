@@ -41,6 +41,8 @@ Route::namespace('Admin')->prefix('/admin')->middleware(['check_user_role:' . \A
     Route::get('/analyze/{supplierFile}/index/{supplierAlgopix}', 'AnalyzeController@show')->name('admin.analyze.show');
 
     Route::get('/download/{supplierFile}', 'AnalyzeController@download')->name('admin.analyze.download');
+    Route::get('/download/{supplierFile}/result', 'AnalyzeController@downloadResult')->name('admin.analyze.download_result');
+    
 });
 
 // Routes for front user

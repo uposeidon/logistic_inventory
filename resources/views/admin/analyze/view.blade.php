@@ -2,7 +2,7 @@
 @section('content')
 <div class="my-3 row p-3 bg-white rounded box-shadow">
    <div class="col-12">
-      <h6 class="border-bottom border-gray p-3 ">{{ __('Analyze Data') }}</h6>
+      <h6 class="border-bottom border-gray p-3 ">{{ __('Analyze Data') }}<span class="float-right"><a href="{{ route('admin.analyze.index') }}">Back</a></span></h6>
       <div class="table-responsive">
          <table class="table table-bordered">
             <thead>

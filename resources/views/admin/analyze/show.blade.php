@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 <div class="my-3 p-3 bg-white rounded box-shadow">
-   <h6 class="border-bottom border-gray p-3 ">{{ __('Analyze Data') }}</h6>
+   <h6 class="border-bottom border-gray p-3 ">{{ __('Analyze Data') }}<span class="float-right"><a href="{{ route('admin.analyze.view',[$supplierAlgopix->suppliers_files_id]) }}">Back</a></h6>
    <div class="table-responsive">
       <table class="table table-bordered">
          <tbody>
