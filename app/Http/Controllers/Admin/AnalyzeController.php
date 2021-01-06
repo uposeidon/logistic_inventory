@@ -79,9 +79,47 @@ class AnalyzeController extends Controller
 
     public function index(Request $request)
     {
+        $monthNames = ['1' => 'January',
+        '2' => 'February',
+        '3' => 'March',
+        '4' => 'April',
+        '5' => 'May',
+        '6' => 'June',
+        '7' => 'July ',
+        '8' => 'August',
+        '9' => 'September',
+        '10' => 'October',
+        '11' => 'November',
+        '12' => 'December'];
+        
+        $years = range(2021, 2031);
+
+        $now = Carbon::now();
+        $currentMonth = $now->month;
+        $currentYear = $now->year;
+
+        if(!empty($request->input('year'))){
+            $currentYear = $request->input('year');
+        }
+        if($request->input('month')){
+            $currentMonth = $request->input('month');
+        }
+        
+        $supplierFilesCount = SupplierFile::whereYear('created_at',$currentYear)->whereMonth('created_at',$currentMonth)->count();
+        $supplierAlgopixCount = SupplierAlgopix::whereYear('created_at',$currentYear)->whereMonth('created_at',$currentMonth)->count();
+
+        $supplierAlgopixSums = DB::table('suppliers_files')->where('status','in-progress')->whereYear('created_at',$currentYear)->whereMonth('created_at',$currentMonth)->get([
+            DB::raw( 'SUM(total_records) as total' ),
+            DB::raw( 'SUM(process_records) as processed' ),
+        ]);
+        $inProgress = $supplierAlgopixSums[0]->total - $supplierAlgopixSums[0]->processed;
+        
         $page = 500;
-        $supplierFiles = SupplierFile::withCount('supplierAlgopixs')->paginate($page);
-        return view('admin.analyze.index', compact('supplierFiles'));
+        $supplierFiles = SupplierFile::withCount('supplierAlgopixs')
+            ->whereYear('created_at',$currentYear)
+            ->whereMonth('created_at',$currentMonth)
+            ->paginate($page);
+        return view('admin.analyze.index', compact('monthNames', 'currentMonth', 'years', 'supplierFilesCount', 'supplierAlgopixCount', 'inProgress', 'currentYear', 'supplierFiles'));
     }
 
     public function view(Request $request,SupplierFile $supplierFile)

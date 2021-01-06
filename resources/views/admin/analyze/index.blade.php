@@ -2,22 +2,80 @@
 @section('content')
 <div class="my-3 row p-3 bg-white rounded box-shadow">
    <div class="col-12">
-      <h6 class="border-bottom border-gray p-3 ">{{ __('Analyze') }}</h6>
-      
-      @if (session('success'))
-      <div class="alert alert-success">
-         {{ session('success') }}
-      </div>
-      @endif
-      @if ($errors->any())
-      <div class="alert alert-danger alert-dismissible" >
-         <ul>
+      <h6 class="border-bottom border-gray p-3 ">{{ __('Analyze') }}
+         <span class="float-right">
+            <form>
+            <div class="row">
+               <div class="col">
+                  <select name="year" class="form-control form-control-sm">
+                     @foreach($years as $year)
+                        <option @if($year == $currentYear) selected @endif value="{{ $year }}">{{ $year }}</option>
+                     @endforeach
+                  </select>
+               </div>
+               <div class="col">
+                  <select name="month" class="form-control form-control-sm">
+                     @foreach($monthNames as $key => $val )
+                        <option @if($key == $currentMonth) selected @endif value="{{ $key }}">{{ $val }}</option>
+                     @endforeach
+                  </select>
+               </div>
+               <div class="col">
+                  <input class="btn btn-primary btn-sm" type="submit" name="search" value="Search" />
+               </div>
+            </div>
+
+            </form>
+         </span>
+      </h6>
+         @if (session('success'))
+         <div class="alert alert-success">
+            {{ session('success') }}
+         </div>
+         @endif
+         @if ($errors->any())
+         <div class="alert alert-danger alert-dismissible" >
+            <ul>
                @foreach ($errors->all() as $error)
                   <li>{{ $error }}</li>
                @endforeach
-         </ul>
+            </ul>
+         </div>
+         @endif      
+         <div class="row">
+            <div class="col-2">
+               <div class="card border-grey mb-3">
+                  <div class="card-body text-grey">
+                     <div style=" font-weight:normal;" class="card-text">{{ $currentYear }}</div>
+                     <div style="font-weight: bold;" class="card-text">{{ $monthNames[$currentMonth] }}</div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-2 offset-4">
+               <div class="card border-grey mb-3">
+                  <div class="card-body text-grey">
+                     <div style="font-size: 0.7rem; font-weight:normal;" class=" text-center card-text">FILES UPLOAD</div>
+                     <div style="font-weight: bold;" class="card-text text-center">{{ $supplierFilesCount }}</div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-2">
+               <div class="card border-grey mb-3">
+                  <div class="card-body text-grey">
+                     <div style="font-size: 0.7rem; font-weight:normal;" class=" text-center card-text">ITEMS ANALYZED</div>
+                     <div style="font-weight: bold;" class="card-text text-center">{{ $supplierAlgopixCount }}</div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-2">
+               <div class="card border-grey mb-3">
+                  <div class="card-body text-grey">
+                  <div style="font-size: 0.7rem; font-weight:normal;" class=" text-center card-text">ITEMS PROCESSING</div>
+                     <div style="font-weight: bold;" class="card-text text-center ">{{ $inProgress }}</div>
+                  </div>
+               </div>
+            </div>
       </div>
-      @endif      
       <div class="table-responsive">
          <table class="table table-bordered">
             <thead>
@@ -73,8 +131,8 @@
                      
                   </td>
                   <td>
-                     <a href="{{ route('admin.analyze.view', $suppliersFile->id) }}">Analyze Data</a>
-                     <a class="btn @if ($suppliersFile->supplier_algopixs_count == 0) disabled @endif" href="{{ route('admin.analyze.download_result',$suppliersFile->id) }}">Download</a>
+                     <a class="btn btn-sm @if ($suppliersFile->supplier_algopixs_count == 0) disabled @endif" href="{{ route('admin.analyze.view', $suppliersFile->id) }}">Analyze Data</a>
+                     <a class="btn btn-sm @if ($suppliersFile->supplier_algopixs_count == 0) disabled @endif" href="{{ route('admin.analyze.download_result',$suppliersFile->id) }}">Download</a>
                      
                   </td>
                </tr>

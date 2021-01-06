@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 <div class="my-3 p-3 bg-white rounded box-shadow">
-   <h6 class="border-bottom border-gray p-3 ">{{ __('View Origin Manifest') }}</h6>
+   <h6 class="border-bottom border-gray p-3 ">{{ __('View Origin Manifest') }}<span class="float-right"><a href="{{ route('admin.supplier.index') }}">Back</a></h6>
    <div class="table-responsive">
       <table class="table table-bordered">
          <tbody>
