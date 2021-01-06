@@ -24,7 +24,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $limit = env('ALGOPIX_API_LIMIT');
+        $schedule->command('algopix:read '.$limit)->everyFiveMinutes();
     }
 
     /**
