@@ -71,7 +71,7 @@
                <div class="card border-grey mb-3">
                   <div class="card-body text-grey">
                   <div style="font-size: 0.7rem; font-weight:normal;" class=" text-center card-text">ITEMS PROCESSING</div>
-                     <div style="font-weight: bold;" class="card-text text-center ">{{ $inProgress }}</div>
+                     <div style="font-weight: bold;" class="card-text text-center ">{{ $supplierAlgopixInProgressCount }}</div>
                   </div>
                </div>
             </div>

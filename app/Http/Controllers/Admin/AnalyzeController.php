@@ -108,18 +108,14 @@ class AnalyzeController extends Controller
         $supplierFilesCount = SupplierFile::whereYear('created_at',$currentYear)->whereMonth('created_at',$currentMonth)->count();
         $supplierAlgopixCount = SupplierAlgopix::whereYear('created_at',$currentYear)->whereMonth('created_at',$currentMonth)->count();
 
-        $supplierAlgopixSums = DB::table('suppliers_files')->where('status','in-progress')->whereYear('created_at',$currentYear)->whereMonth('created_at',$currentMonth)->get([
-            DB::raw( 'SUM(total_records) as total' ),
-            DB::raw( 'SUM(process_records) as processed' ),
-        ]);
-        $inProgress = $supplierAlgopixSums[0]->total - $supplierAlgopixSums[0]->processed;
+        $supplierAlgopixInProgressCount = DB::table('suppliers_files')->where('status','in-progress')->whereYear('created_at',$currentYear)->whereMonth('created_at',$currentMonth)->count();
         
         $page = 500;
         $supplierFiles = SupplierFile::withCount('supplierAlgopixs')
             ->whereYear('created_at',$currentYear)
             ->whereMonth('created_at',$currentMonth)
             ->paginate($page);
-        return view('admin.analyze.index', compact('monthNames', 'currentMonth', 'years', 'supplierFilesCount', 'supplierAlgopixCount', 'inProgress', 'currentYear', 'supplierFiles'));
+        return view('admin.analyze.index', compact('monthNames', 'currentMonth', 'years', 'supplierFilesCount', 'supplierAlgopixCount', 'supplierAlgopixInProgressCount', 'currentYear', 'supplierFiles'));
     }
 
     public function view(Request $request,SupplierFile $supplierFile)
