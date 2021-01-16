@@ -8,12 +8,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Http;
 
 class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
     
     public function index()
@@ -91,4 +92,5 @@ class UserController extends Controller
         User::where('id',$id)->delete();
         return redirect()->route('admin.users.index')->with('success', 'User Deleted Successfully!');
     }
+
 }
