@@ -1,0 +1,22 @@
+:root {
+    --default-white: #ffffff;
+    --background-color: #ECECEC;
+    --dropdown-height: 40px;
+    --app-structure: 84%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #ECECEC;
+}
+
+.structure {
+    width: 1140px;
+    margin: auto;
+}
+
+.app{
+    margin-top: 40px;
+}
