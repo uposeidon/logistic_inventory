@@ -21,7 +21,7 @@ export default {
     'ProductInfo': ProductInfo
   },
   mounted () {
-    document.title = "Shaumik G."
+    document.title = "Tom C."
   }
 }
 </script>
