@@ -1,3 +1,4 @@
+/*Shaumik G.*/
 :root {
     --default-white: #ffffff;
     --background-color: #ECECEC;
@@ -9,7 +10,6 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Times New Roman', Times, serif;
-    background-color: red;
 }
 
 .structure {
@@ -19,4 +19,13 @@ body {
 
 .app{
     margin-top: 40px;
+}
+
+.progress-bar {
+    border-radius: none !important;
+    background-color: #629FDE !important;
+}
+
+.progress {
+    border-radius: none !important;
 }

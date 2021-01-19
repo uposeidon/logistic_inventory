@@ -1,3 +1,5 @@
+/*Shaumik G.*/
+
 .product-infos {
     width: var(--app-structure);
     margin: auto;
@@ -104,6 +106,20 @@
     display: flex;
     justify-content: space-between;
     height: 200px;
+}
+
+.product-additional-2 {
+    display: flex;
+    justify-content: space-between;
+    height: 200px;
+    transition: 2s;
+}
+
+.product-additional-on-click {
+    height: 0px;
+    display: none;
+    overflow: hidden;
+    transition: 2s;
 }
 
 .button-title h6 {
