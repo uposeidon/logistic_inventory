@@ -1,0 +1,91 @@
+.product-insight{
+    width: var(--app-structure);
+    margin: auto;
+    padding: 50px;
+}
+
+.product-insight h2 {
+    color: #0075FF;
+    font-weight: normal;
+}
+
+.table {
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.table thead tr th {
+    color: #727272;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+#cursor-type {
+    cursor: text;
+    position: relative;
+}
+
+.insith-details {
+    background-color: rgb(0, 0, 0);
+    width: 200px;
+    height: 250px;
+    padding: 10px;
+    color: white;
+    font-size: 13px;
+    font-weight: normal;
+    border-radius: 5px;
+    position: absolute;
+    top: -235px;
+    left: -30px;
+    display: none;
+}
+
+.table > :not(caption) > * > * {
+    padding: 1rem 0.5rem !important;
+    background-color: var(--bs-table-bg);
+    background-image: linear-gradient(var(--bs-table-accent-bg), var(--bs-table-accent-bg));
+    border-bottom-width: 1px;
+}
+
+#company{
+    font-size: 18px;
+    font-weight: bold;
+    color: #5F5F5F;
+}
+
+#market_price {
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+#expenses{
+    font-weight: bold;
+    text-decoration: underline;
+    color: #5F5F5F;
+}
+
+#expenses i{
+    color: #239FD7;
+}
+
+#profit{
+    color: #28A751;
+}
+
+#competetion i {
+    color: #239FD7;
+}
+
+#recc{
+    background-color: #3BDC96;
+    font-weight: bold;
+}
+
+#recc i {
+    color: #686868;
+}
+#sign{
+    background-color: #4A90E2;
+    color: white;
+}

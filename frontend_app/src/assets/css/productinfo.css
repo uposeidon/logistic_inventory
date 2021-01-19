@@ -3,6 +3,7 @@
     margin: auto;
     padding: 50px;
     box-sizing: border-box;
+    border-bottom: 1px solid #e6e6e6;
 }
 
 .product-info-title h2 {
@@ -51,7 +52,7 @@
 }
 
 .product-image-area img{
-    width: 150px;
+    width: 270px;
     height: 150px;
 }
 
