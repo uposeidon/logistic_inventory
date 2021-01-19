@@ -1,3 +1,4 @@
+<!-- Shaumik G. -->
 <template>
     <div>
         <div class="product-info-area">
@@ -74,7 +75,7 @@
                             <div class="button-title">
                                 <h6 id="ds"><i class="fa fa-caret-right" id="ai"></i>&nbsp;View Additional Attributes</h6>
                             </div>
-                            <div class="product-additional">
+                            <div id="product-additional" class="product-additional">
                                 <div class="product-details-sec product-details-sec-4">
                                     <table>
                                         <tr>
@@ -164,7 +165,8 @@ export default {
                 .on('mousedown', false);
 
                  setTimeout(function(){
-                     $('.product-additional').hide(1000);
+                     $('#product-additional').removeClass('product-additional-2');
+                     $('#product-additional').addClass('product-additional-on-click');
                 }, 1000);
             }else{
                 $('#ai').attr('class', '');
@@ -180,7 +182,8 @@ export default {
                 .on('mousedown', false);
 
                  setTimeout(function(){
-                     $('.product-additional').show(1000);
+                     $('#product-additional').removeClass('product-additional-on-click');
+                     $('#product-additional').addClass('product-additional-2');
                 }, 1000);
             }
         });

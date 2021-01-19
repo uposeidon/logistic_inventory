@@ -1,3 +1,4 @@
+<!-- Shaumik G. -->
 <template>
   <div class="banner-area">
       <div class="banner structure">

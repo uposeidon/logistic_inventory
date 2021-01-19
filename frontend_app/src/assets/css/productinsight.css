@@ -1,7 +1,10 @@
+/*Shaumik G.*/
+
 .product-insight{
     width: var(--app-structure);
     margin: auto;
     padding: 50px;
+    border-bottom: 1px solid #E6E6E6;
 }
 
 .product-insight h2 {
@@ -80,12 +83,288 @@
 #recc{
     background-color: #3BDC96;
     font-weight: bold;
+    padding-left: 10px;
+    color: #474659;
+    font-size: 13px;
 }
 
 #recc i {
     color: #686868;
 }
+
 #sign{
     background-color: #4A90E2;
     color: white;
+}
+
+
+.data-table {
+    width: 100%;
+    cursor: pointer;
+    color: #727272;
+}
+
+.table-header {
+    display: flex;
+}
+
+.table-header-row{
+    height: 30px;
+    width: 140px;
+    box-sizing: border-box;
+    font-size: 13px;
+}
+
+.table-body{
+    width: 100%;
+}
+
+.table-data{
+    display: flex;
+    border-left: 1px solid gray;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+.table-bpdy-row{
+    width: 140px;
+    height: 70px;
+    box-sizing: border-box;
+    font-size: 16px;
+    padding-top: 20px;
+}
+
+.tble-row-1{
+    width: 30px !important;
+    background-color: #ffffff;
+}
+
+.tble-row-2{
+    width: 160px;
+}
+.tbl-body-row-1{
+    width: 30px!important;
+    background-color: #4A90E2;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0 !important;
+}
+
+.tbl-body-row-2{
+    padding-left: 5px;
+    width: 160px;
+}
+
+
+.tble-row-9 {
+    width: 20px !important;
+}
+
+.tbl-body-row-9 {
+    width: 20px !important;
+}
+
+/* this is for js/jquery action*/
+.table-collasp {
+    width: 100%;
+    height: 500px;
+}
+.table-collasp-2 {
+    width: 100%;
+    height: 500px;
+    transition: 1s;
+}
+/* this is for js/jquery action*/
+
+.table-collasp-on-load {
+    width: 100%;
+    height: 0px;
+    overflow: hidden;
+    transition: 1s;
+}
+
+.tab-area {
+    padding: 20px;
+}
+
+a {
+    color: #4A92E3 !important;
+}
+.algo-recommendation-area {
+    margin-top: 50px;
+    line-height: 50px;
+}
+
+.algo-recommendation-area #title {
+    color: #05BA73;
+}
+
+.algo-recommendation-area h5 {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.algo-recommendation-area #desc{
+    color: #474647;
+    font-family: Roboto,sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.algo-recommendation-area-result {
+    display: flex;
+    justify-content: space-between;
+}
+
+.recoom {
+    border: 1px solid #E1E1E1;
+    width: 320px;
+    height: 250px;
+    box-sizing: border-box;
+    padding: 20px;
+    text-align: center;
+}
+
+.recoom-result-1 h5 {
+    margin-top: 50px;
+    color: #05BA73;
+}
+
+.recoom-result-2 h6 {
+    color: #05BA73;
+}
+
+.recoom-result-2 h3 {
+    color: #05BA73;
+    font-size: 50px;
+    font-weight: normal;
+    line-height: 100px;
+}
+
+.recoom-result-2 h6 {
+    color:#727272;
+}
+
+.recoom-result-3 h3{
+    line-height: 80px;
+    color: #05BA73;
+    font-size: 50px;
+    font-weight: normal;
+}
+
+.competitive-analysis-area {
+    width: 100%;
+    display: flex;
+    margin-top: 50px;
+}
+
+.competitive-analysis-area-left {
+    width: 700px;
+    padding: 10px;
+}
+
+.competitive-analysis-area-right {
+    width: 280px;
+    height: 330px;
+    padding: 15px;
+    background-color: #F9F9F9;
+}
+
+.competitive-analysis-header-area {
+    display: flex;
+}
+
+.comp {
+    flex-grow: 1;
+    height: 60px;
+    border-right: 1px solid #979797;
+    width: 200px;
+    padding-left: 10px;
+}
+
+.cmp-2{
+    padding-left: 20px;
+}
+
+.cmp-2:last-child {
+    border-right: none;
+}
+
+.comp p {
+    font-size: 13px;
+    color: black;
+}
+
+.competetive-offer {
+    margin-top: 40px
+}
+
+.competetive-offer h5{
+    color: #4A90E2;
+}
+
+.comepetive-offer-bottom{
+    display: flex;
+    line-height: 5px;
+}
+
+.comepetive-offer-bottom h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: black;
+    font-weight: bold;
+}
+
+.completetive-bottom {
+    width: 250px;
+    border-right: 1px solid black;
+}
+
+.cmpt-2 {
+    padding-left: 20px;
+}
+
+.cmpt-2:last-child{
+    border-right: none;
+}
+
+.competitive-analysis-right{
+    height: 100px;
+    border-bottom: 2px solid #CDD3D5;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    justify-content: center;
+}
+
+.table {
+    width: 92% !important;
+}
+
+.comp-left h4 {
+    color: black;
+    font-weight: 600;
+}
+
+
+.comp-right h4 {
+    color: black;
+    font-weight: 600;
+}
+
+.competitive-analysis-right h4 i {
+    color: red;
+}
+
+.cmpt-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
