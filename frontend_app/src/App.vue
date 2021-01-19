@@ -3,6 +3,7 @@
      <Header/>
      <Banner/>
      <ProductInfo/>
+     <ProductInsight/>
   </div>
 </template>
 
@@ -11,6 +12,7 @@
 import Header from './components/partials/Header';
 import Banner from './components/partials/Banner';
 import ProductInfo from './components/partials/ProductInfo';
+import ProductInsight from './components/partials/ProductInsight';
 import './assets/css/app.css';
 
 export default {
@@ -18,7 +20,8 @@ export default {
   components: {
     'Header': Header,
     'Banner': Banner,
-    'ProductInfo': ProductInfo
+    'ProductInfo': ProductInfo,
+    'ProductInsight': ProductInsight
   },
   mounted () {
     document.title = "Shaumik G."
