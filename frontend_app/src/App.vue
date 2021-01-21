@@ -1,8 +1,11 @@
+<!-- Shaumik G. -->
 <template>
   <div class="app">
      <Header/>
      <Banner/>
      <ProductInfo/>
+     <ProductInsight/>
+     <ProductSales/>
   </div>
 </template>
 
@@ -11,6 +14,9 @@
 import Header from './components/partials/Header';
 import Banner from './components/partials/Banner';
 import ProductInfo from './components/partials/ProductInfo';
+import ProductInsight from './components/partials/ProductInsight';
+import ProductSales from './components/partials/ProductSales';
+
 import './assets/css/app.css';
 
 export default {
@@ -18,7 +24,9 @@ export default {
   components: {
     'Header': Header,
     'Banner': Banner,
-    'ProductInfo': ProductInfo
+    'ProductInfo': ProductInfo,
+    'ProductInsight': ProductInsight,
+    'ProductSales': ProductSales,
   },
   mounted () {
     document.title = "Tom C."

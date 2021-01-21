@@ -1,8 +1,11 @@
+/*Shaumik G.*/
+
 .product-infos {
     width: var(--app-structure);
     margin: auto;
     padding: 50px;
     box-sizing: border-box;
+    border-bottom: 1px solid #e6e6e6;
 }
 
 .product-info-title h2 {
@@ -51,7 +54,7 @@
 }
 
 .product-image-area img{
-    width: 150px;
+    width: 270px;
     height: 150px;
 }
 
@@ -103,6 +106,20 @@
     display: flex;
     justify-content: space-between;
     height: 200px;
+}
+
+.product-additional-2 {
+    display: flex;
+    justify-content: space-between;
+    height: 200px;
+    transition: 2s;
+}
+
+.product-additional-on-click {
+    height: 0px;
+    display: none;
+    overflow: hidden;
+    transition: 2s;
 }
 
 .button-title h6 {

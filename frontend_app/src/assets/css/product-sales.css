@@ -1,0 +1,80 @@
+/*Shaumik G.*/
+
+.product-sales-area {
+    width: var(--app-structure);
+    margin: auto;
+    margin-top: 50px;
+}
+
+.product-sales-header h2 i {
+    cursor: pointer;
+}
+
+.product-sales-table-header {
+    display: flex;
+}
+.product-sales-table-body {
+    display: flex;
+}
+
+.product-sales-table {
+    width: 100%;
+}
+
+.hd-row-1 {
+    width: 200px;;
+}
+.bd-row-1 {
+    width: 200px;
+    padding-top: 10px;
+}
+
+.hd-row-2 {
+    width: 500px;
+}
+
+.bd-row-2 {
+    width: 500px;
+    padding-right: 20px;
+    padding-top: 15px;
+}
+
+.hd-row-3 {
+    width: 170px;
+    padding: 10px;
+}
+
+.hd-row-4 {
+    width: 170px;
+    padding: 10px;
+}
+
+.bd-row-3 {
+    padding: 10px;
+    width: 170px;
+}
+
+.bd-row-4 {
+    padding: 10px;
+    width: 170px;
+}
+
+.title-for-total {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.spm{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.erpm {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.slaes-border{
+    border-top: 2px solid #DEE2E6;
+    border-bottom: 1px solid #DEE2E6;
+}
