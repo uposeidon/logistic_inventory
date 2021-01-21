@@ -1,4 +1,4 @@
-<!-- Shaumik G. -->
+<!-- Tom C. -->
 <template>
   <div class="app">
      <Header/>

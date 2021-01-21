@@ -1,4 +1,4 @@
-<!-- Shaumik G. -->
+<!-- Tom C. -->
 <template>
 <!-- Modal -->
 <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModal" aria-hidden="true">
