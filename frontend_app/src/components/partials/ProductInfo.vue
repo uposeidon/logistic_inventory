@@ -1,4 +1,4 @@
-<!-- Shaumik G. -->
+<!-- Tom C. -->
 <template>
     <div>
         <div class="product-info-area">
