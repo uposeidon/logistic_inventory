@@ -10,9 +10,17 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.2",
     "@fortawesome/vue-fontawesome": "^3.0.0-3",
+    "@tailwindcss/postcss7-compat": "^2.0.2",
+    "animate.css": "^4.1.1",
+    "apexcharts": "^3.23.1",
+    "autoprefixer": "^9.8.6",
     "bootstrap": "^5.0.0-beta1",
     "core-js": "^3.6.5",
-    "vue": "^3.0.0"
+    "postcss": "^7.0.35",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
+    "vue": "^3.0.0",
+    "vue3-apexcharts": "^1.1.1",
+    "vue3-click-away": "^1.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
