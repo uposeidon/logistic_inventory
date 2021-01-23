@@ -24,7 +24,7 @@
                   <span class="font-ubuntu text-size-14px"
                     >{{ 'Highest Profit Opportunity' }}
                   </span>
-                  <QuestionMark />
+                  <QuestionMark text="test tooltip here" />
                 </div>
               </div>
               <div style="height: 60px">
@@ -43,7 +43,7 @@
                   <span class="font-ubuntu text-size-14px"
                     >{{ "Product's Demand Level" }}
                   </span>
-                  <QuestionMark />
+                  <QuestionMark text="test tooltip here" />
                 </div>
               </div>
               <div style="height: 60px">
@@ -60,7 +60,7 @@
                   <span class="font-ubuntu text-size-14px"
                     >{{ 'Highest Profit Opportunity' }}
                   </span>
-                  <QuestionMark />
+                  <QuestionMark text="test tooltip here" />
                 </div>
               </div>
               <div style="height: 60px">
@@ -77,7 +77,7 @@
                   <span class="font-ubuntu text-size-14px"
                     >{{ 'Highest Profit Opportunity' }}
                   </span>
-                  <QuestionMark />
+                  <QuestionMark text="test tooltip here" />
                 </div>
               </div>
               <div style="height: 60px">
