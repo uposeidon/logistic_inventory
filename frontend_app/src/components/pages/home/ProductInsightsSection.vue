@@ -59,7 +59,7 @@
                   @click="toggle(item.id)"
                   class="bg-primary p-3 mr-3 font-bold text-white btn-expand"
                 >
-                  <i class="icon-plus"></i>
+                  <i class="icon-plus" :id="`row-${item.id}`"></i>
                 </button>
                 <img :src="ebayIcon" class="mr-3" />
                 {{ item.marketPlace }}
@@ -70,10 +70,19 @@
             <td class="bg-gray-100 py-2 font-ubuntu">{{ item.profit }}</td>
             <td class="bg-gray-100 py-2 font-ubuntu">{{ item.competition }}</td>
             <td class="bg-gray-100 py-2 font-ubuntu">{{ item.demand }}</td>
-            <td class="bg-gray-100 py-2 font-ubuntu bg-green-400">
+            <td
+              class="bg-gray-100 py-2 font-ubuntu"
+              :class="[item.isRecommended ? 'bg-green-400' : '']"
+            >
               <div class="flex items-center justify-center font-ubuntu">
-                <i class="icon-plus font-bold mr-2"></i>{{ 'Recommendation' }}
+                <i class="icon-plus font-bold mr-2"></i>
+                {{
+                  item.isRecommended ? 'Recommendation' : 'Not Recommendation'
+                }}
               </div>
+              <p v-if="!item.isRecommended" class="text-center text-size-11px">
+                {{ 'Demand is low' }}
+              </p>
             </td>
           </tr>
           <tr v-if="opened.includes(item.id)">
@@ -327,7 +336,7 @@ export default {
           profit: '$6.80',
           competition: 'High',
           demand: 'Low',
-          isRecommended: false
+          isRecommended: true
         },
         {
           id: 2,
@@ -337,7 +346,7 @@ export default {
           profit: '$6.80',
           competition: 'High',
           demand: 'Low',
-          isRecommended: false
+          isRecommended: true
         },
         {
           id: 3,
@@ -355,10 +364,20 @@ export default {
   mounted() {},
   methods: {
     toggle(id) {
+      let rowIcon = document.getElementById(`row-${id}`)
+
       const index = this.opened.indexOf(id)
       if (index > -1) {
         this.opened.splice(index, 1)
+        if (rowIcon.classList.contains('icon-minus')) {
+          rowIcon.classList.remove('icon-minus')
+          rowIcon.classList.add('icon-plus')
+        }
       } else {
+        if (rowIcon.classList.contains('icon-plus')) {
+          rowIcon.classList.remove('icon-plus')
+          rowIcon.classList.add('icon-minus')
+        }
         this.opened.push(id)
       }
     }
