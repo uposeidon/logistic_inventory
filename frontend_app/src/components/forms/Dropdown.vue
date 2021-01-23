@@ -9,7 +9,7 @@
         >
       </div>
       <div class="pb-1">
-        <QuestionMark color="white" />
+        <QuestionMark text="test tooltip here" color="white" />
       </div>
     </div>
     <div class="custom-dropdown">

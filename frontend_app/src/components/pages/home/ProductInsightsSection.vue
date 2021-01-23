@@ -160,7 +160,10 @@
                                       <span class="font-ubuntu text-size-15px"
                                         >{{ 'By USPS' }}
                                       </span>
-                                      <QuestionMark color="white" />
+                                      <QuestionMark
+                                        text="test tooltip here"
+                                        color="white"
+                                      />
                                     </div>
                                   </div>
                                 </div>
@@ -184,7 +187,10 @@
                                       <span class="font-ubuntu text-size-15px"
                                         >{{ 'Referral Fee' }}
                                       </span>
-                                      <QuestionMark color="white" />
+                                      <QuestionMark
+                                        text="test tooltip here"
+                                        color="white"
+                                      />
                                     </div>
                                   </div>
                                 </div>
@@ -224,7 +230,10 @@
                                       <span class="font-ubuntu text-size-15px"
                                         >{{ 'Estimated Taxes' }}
                                       </span>
-                                      <QuestionMark color="white" />
+                                      <QuestionMark
+                                        text="test tooltip here"
+                                        color="white"
+                                      />
                                     </div>
                                   </div>
                                 </div>
