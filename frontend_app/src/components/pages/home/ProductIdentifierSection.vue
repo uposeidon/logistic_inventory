@@ -2,15 +2,9 @@
   <div class="container">
     <div class="flex flex-col lg:flex-row justify-between">
       <div class="lg:w-50p flex flex-col">
-        <Dropdown
-          label="Product Identifier"
-          value="B081KEJDE"
-          :options="['test 1', 'test 2', 'test 3']"
-          @update-value="getProductIdentifier"
-          id="product-identifier"
-        />
+        <TextInput v-model="form.name" label="Product Identifier" />
       </div>
-      <div class="lg:w-40p flex flex-col px-3">
+      <div class="lg:w-45p flex flex-col px-3">
         <Dropdown
           label="Identifying Type"
           value="ASIN"
@@ -19,7 +13,7 @@
           id="product-identifier-type"
         />
       </div>
-      <div class="lg:w-10p flex flex-col justify-end">
+      <div class="lg:w-5p flex flex-col justify-end">
         <button class="bg-primary search-btn">
           <i class="icon-search"></i>
         </button>
@@ -30,6 +24,7 @@
 
 <script>
 import Dropdown from '@/components/forms/Dropdown'
+import TextInput from '@/components/forms/TextInput'
 export default {
   data() {
     return {
@@ -37,7 +32,8 @@ export default {
     }
   },
   components: {
-    Dropdown
+    Dropdown,
+    TextInput
   },
   methods: {
     getProductIdentifier(value) {
