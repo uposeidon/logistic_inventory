@@ -8,7 +8,7 @@
           >{{ label }}</label
         >
       </div>
-      <div class="pb-1">
+      <div>
         <QuestionMark text="test tooltip here" color="white" />
       </div>
     </div>

@@ -387,14 +387,14 @@ export default {
   border-bottom: 0
   cursor: pointer
   font-weight: 600
-  &::after
-    content: ""
-    position: absolute
-    left: 15px
-    bottom: 10px
-    width: 22px
-    height: 4px
-    background: #8d8d8d
+  // &::after
+  //   content: ""
+  //   position: absolute
+  //   left: 15px
+  //   bottom: 10px
+  //   width: 22px
+  //   height: 4px
+  //   background: #8d8d8d
   &:hover,
   .tabset > input:focus + label
     color: #06c
@@ -406,10 +406,10 @@ export default {
   border-color: #ccc
   border-bottom: 1px solid #fff
   margin-bottom: -1px
+  border-top: 5px solid #4A90E2
 .tab-panel
   padding: 30px 0
   border-top: 1px solid #ccc
-
 *,*:before,*:after
   box-sizing: border-box
 table

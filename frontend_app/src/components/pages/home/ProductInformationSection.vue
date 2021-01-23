@@ -165,12 +165,25 @@
               <div class="mt-5">
                 <div>
                   <div class="flex items-center">
-                    <img :src="chevronDown" alt="chevron-down" />
-                    <span class="ml-1 font-ubuntu-medium text-size-15px">{{
-                      'View Additional Attributes'
-                    }}</span>
+                    <img
+                      :src="chevronDown"
+                      alt="chevron-down"
+                      :style="{
+                        transform: !showAdditionalAttributes
+                          ? 'rotate(270deg)'
+                          : 'rotate(360deg)'
+                      }"
+                    />
+                    <span
+                      class="ml-1 font-ubuntu-medium text-size-15px cursor-pointer"
+                      @click="toggleAdditionalAttributes"
+                      >{{ 'View Additional Attributes' }}</span
+                    >
                   </div>
-                  <div class="flex flex-col lg:flex-row">
+                  <div
+                    class="flex flex-col lg:flex-row"
+                    v-if="showAdditionalAttributes"
+                  >
                     <div class="w-full lg:w-1/2">
                       <div class="flex flex-col mt-3">
                         <div
@@ -243,6 +256,7 @@ export default {
   },
   data() {
     return {
+      showAdditionalAttributes: false,
       productInfoHeaderBG,
       productNotRecommended,
       testProduct,
@@ -331,6 +345,13 @@ export default {
           value: 'Dyson'
         }
       ]
+    }
+  },
+  methods: {
+    toggleAdditionalAttributes() {
+      this.showAdditionalAttributes = this.showAdditionalAttributes
+        ? false
+        : true
     }
   }
 }
