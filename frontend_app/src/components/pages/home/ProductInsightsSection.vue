@@ -87,7 +87,11 @@
           </tr>
           <tr v-if="opened.includes(item.id)">
             <td colspan="7">
-              <div class="py-3">
+              <div class="py-3 relative">
+                <i
+                  class="icon-x font-bold absolute right-0 cursor-pointer top-5"
+                  @click="toggle(item.id)"
+                ></i>
                 <div class="tabset">
                   <input
                     type="radio"
