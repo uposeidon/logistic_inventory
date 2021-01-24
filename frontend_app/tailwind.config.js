@@ -10,10 +10,13 @@ module.exports = {
         'size-14px': '14px',
         'size-15px': '15px',
         'size-17px': '17px',
+        'size-18px': '18px',
+        'size-22px': '22px',
         'size-23px': '23px',
         'size-27px': '27px',
         'size-29px': '29px',
-        'size-34px': '34px'
+        'size-34px': '34px',
+        'size-38px': '38px'
       },
       colors: {
         bodyBG: '#E5E5E5'
