@@ -10,6 +10,8 @@
       <hr />
       <ProductSalesPerformanceSection />
     </div>
+    <br />
+    <br />
   </div>
 </template>
 

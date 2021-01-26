@@ -108,7 +108,7 @@
       <div class="p-5 bg-white font-ubuntu text-size-27px">
         <div class="flex flex-col lg:flex-row">
           <div class="w-full lg:w-70p">
-            <h1 class="text-primary font-ubuntu text-size-29px">
+            <h1 class="text-blue-400 font-ubuntu text-size-29px">
               {{ 'Product Information' }}
             </h1>
             <span class="font-ubuntu text-size-17px">{{
@@ -247,7 +247,7 @@
 <script>
 import productInfoHeaderBG from '@/assets/images/product-info-header.png'
 import productNotRecommended from '@/assets/images/product-not-recommended.png'
-import testProduct from '@/assets/images/test-product.png'
+import testProduct from '@/assets/images/puck.svg'
 import chevronDown from '@/assets/images/chevron-down.svg'
 import QuestionMark from '@/components/custom-icons/QuestionMark'
 export default {

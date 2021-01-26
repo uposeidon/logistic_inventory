@@ -96,10 +96,31 @@
               </div>
             </div>
           </div>
+          <div class="flex h-50px mb-1 mt-5" v-if="hasAddedExpenses">
+            <div>
+              <input
+                type="text"
+                class="border border-gray-600 px-3 py-2"
+                placeholder="Other"
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                class="border border-gray-600 px-3 py-2 ml-3"
+                placeholder="0"
+              />
+              <button class="bg-gray-700 px-3 py-2 ml-3 text-white">
+                {{ 'Add' }}
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="my-2">
-          <a href="" class="text-primary font-ubuntu flex items-center"
-            ><i class="icon-plus mr-1"></i> Add Expenses</a
+        <div class="mb-2">
+          <span
+            class="text-blue-400 font-ubuntu flex items-center cursor-pointer"
+            @click="addExpenses"
+            ><i class="icon-plus mr-1"></i> Add Expenses</span
           >
         </div>
         <hr />
@@ -130,6 +151,7 @@ export default {
   },
   data() {
     return {
+      hasAddedExpenses: false,
       chartOptions: {
         labels: [
           'Purchasing Cost',
@@ -205,9 +227,11 @@ export default {
       },
       series: [44, 55, 13, 33, 44]
     }
+  },
+  methods: {
+    addExpenses() {
+      this.hasAddedExpenses = true
+    }
   }
 }
 </script>
-
-<style>
-</style>

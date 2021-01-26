@@ -22,7 +22,7 @@
         </div>
         <div class="mt-5">
           <span
-            class="font-ubuntu-medium text-primary text-size-18px block mb-2"
+            class="font-ubuntu-medium text-blue-400 text-size-18px block mb-2"
             >{{ 'Competitive Offerings' }}</span
           >
           <table class="w-full">

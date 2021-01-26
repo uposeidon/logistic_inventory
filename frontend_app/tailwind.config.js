@@ -9,6 +9,7 @@ module.exports = {
         'size-13px': '13px',
         'size-14px': '14px',
         'size-15px': '15px',
+        'size-16px': '16px',
         'size-17px': '17px',
         'size-18px': '18px',
         'size-22px': '22px',
@@ -30,9 +31,12 @@ module.exports = {
         '50px': '50px',
         '5p': '5%',
         '10p': '10%',
+        '15p': '15%',
         '20p': '20%',
+        '25p': '25%',
         '30p': '30%',
         '35p': '35%',
+        '40p': '40%',
         '45p': '45%',
         '50p': '50%',
         '60p': '60%',
@@ -42,16 +46,15 @@ module.exports = {
         '90p': '90%'
       },
       height: {
+        '10px': '10px',
+        '20px': '20px',
         '40px': '40px',
         '50px': '50px',
         '60px': '60px',
+        '80px': '80px',
         '100px': '100px',
         '120px': '120px'
       },
-      fontFamily: {
-        'ubuntu': 'Ubuntu Regular',
-        'ubuntu-medium': 'Ubuntu Medium'
-      }
     },
   },
   variants: {
