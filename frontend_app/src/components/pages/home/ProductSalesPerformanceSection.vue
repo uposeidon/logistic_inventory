@@ -1,123 +1,193 @@
 <template>
   <div class="container bg-white p-5">
     <div class="flex items-center">
-      <h1 class="text-primary font-ubuntu text-size-29px">
+      <h1 class="text-blue-400 font-ubuntu text-size-29px">
         {{ 'Last 30 Days Product Sales Performance ' }}
       </h1>
-      <img :src="youtubeIcon" class="ml-3" @click="openModal" />
+      <img :src="youtubeIcon" class="ml-3" @click="openYoutubeModal" />
     </div>
-    <div class="flex flex-col my-3">
-      <div class="flex w-full border-b-2 border-gray-300 py-3">
-        <div class="w-40p"></div>
-        <div class="w-30p flex justify-end">
-          <div class="flex items-center">
-            <span class="font-ubuntu">{{
-              'Estimated unit sales per month'
-            }}</span
-            ><QuestionMark text="test tooltip here" color="white" />
-          </div>
-        </div>
-        <div class="w-30p flex justify-end">
-          <div class="flex items-center">
-            <span class="font-ubuntu">{{ 'Estimated revenues per month' }}</span
-            ><QuestionMark text="test tooltip here" color="white" />
-          </div>
-        </div>
-      </div>
-      <div class="flex w-full border-b-2 border-gray-300 py-3">
-        <div class="w-40p flex items-center">
-          <img :src="amazonIcon" class="mr-3" />{{ 'Amazon US' }}
-        </div>
-        <div class="w-30p flex justify-end">
-          <span class="font-ubuntu">{{ '35' }}</span>
-        </div>
-        <div class="w-30p flex justify-end">
-          <span class="font-ubuntu">{{ '$300' }}</span>
-        </div>
-      </div>
-      <div class="flex w-full border-b-2 border-gray-300 py-3">
-        <div class="w-40p flex items-center">
-          <img :src="ebayIcon" class="mr-3" />{{ 'eBay US' }}
-        </div>
-        <div class="w-30p flex justify-end">
-          <span class="font-ubuntu text-size-14px text-gray-400">{{
-            "Couldn't find listings that produced sales"
-          }}</span>
-        </div>
-        <div class="w-30p flex justify-end">
-          <button class="px-3 font-ubuntu bg-primary text-white text-size-12px">
-            {{ 'Edit Sales Filter' }}
-          </button>
-        </div>
-      </div>
-      <div class="flex w-full border-b-2 border-gray-300 py-3">
-        <div class="w-40p flex items-center">
-          <img :src="walmartIcon" class="mr-3" />{{ 'Walmart US' }}
-        </div>
-        <div class="w-60p flex justify-end">
-          <span class="font-ubuntu text-size-14px text-blue-300">{{
-            'Data unavailable because the market price could not be found'
-          }}</span>
-        </div>
-      </div>
-      <div class="flex w-full py-3">
-        <div class="w-40p flex items-center">
-          {{ 'Total' }}
-        </div>
-        <div class="w-30p flex justify-end">
-          <span class="font-ubuntu text-size-17px">{{ '33' }}</span>
-        </div>
-        <div class="w-30p flex justify-end">
-          <span class="font-ubuntu text-size-17px">{{ '$300' }}</span>
-        </div>
-      </div>
+    <div>
+      <table class="w-full my-3">
+        <thead>
+          <tr>
+            <th class="w-50p"></th>
+            <th class="w-20pp">
+              <div class="flex items-center justify-end">
+                <span class="font-ubuntu text-size-14px">{{
+                  'Estimated unit sales per month'
+                }}</span
+                ><QuestionMark color="white" text="test" />
+              </div>
+            </th>
+            <th class="w-20p">
+              <div class="flex items-center justify-end w-full">
+                <span class="font-ubuntu text-size-14px">{{
+                  'Estimated revenues per month'
+                }}</span
+                ><QuestionMark color="white" text="test" />
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <template v-for="(item, index) in list" :key="index">
+            <tr class="cursor-pointer">
+              <td class="border-b border-b-gray-400 py-2 w-40p">
+                <div class="flex justify-between">
+                  <div class="flex w-50p">
+                    <img :src="ebayIcon" class="mr-3" />
+                    <span class="font-ubuntu font-bold">{{ item.value1 }}</span>
+                  </div>
+                  <div class="w-50p">
+                    <div class="w-full bg-blue-400">
+                      <div class="w-1/2 bg-blue-400">&nbsp;</div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td
+                class="border-b border-b-gray-400 py-2 font-ubuntu w-30p text-right text-size-12px"
+              >
+                <span
+                  v-if="!index"
+                  style="padding: 1px 2px"
+                  @click="toggle(item.id)"
+                  class="bg-blue-400 text-white rounded"
+                  ><i
+                    class="font-bold"
+                    :class="[
+                      opened.includes(item.id) ? 'icon-minus' : 'icon-plus'
+                    ]"
+                  ></i
+                ></span>
+                {{ item.value2 }}
+              </td>
+              <td
+                class="border-b border-b-gray-400 py-2 font-ubuntu w-30p text-right text-size-12px"
+              >
+                <span
+                  v-if="!index"
+                  style="padding: 1px 2px"
+                  @click="toggle(item.id)"
+                  class="bg-blue-400 text-white rounded"
+                  ><i
+                    class="font-bold"
+                    :class="[
+                      opened.includes(item.id) ? 'icon-minus' : 'icon-plus'
+                    ]"
+                  ></i
+                ></span>
+                {{ item.value3 }}
+              </td>
+            </tr>
+            <tr v-if="opened.includes(item.id)">
+              <td colspan="3">
+                <div class="border border-gray-600 p-3">
+                  <div class="flex items-center cursor-pointer">
+                    <img
+                      :src="chevronDown"
+                      alt="chevron-down"
+                      :style="{
+                        transform: !showAdvanceFilter
+                          ? 'rotate(270deg)'
+                          : 'rotate(361deg)'
+                      }"
+                    />
+                    <span
+                      @click="toggleAdvanceFilter"
+                      class="text-gray-600 font-ubuntu-medium ml-1"
+                      >{{ 'Advance Filters' }}</span
+                    >
+                    <QuestionMark color="white" text="Lorem ipsum" />
+                  </div>
+                  <p class="px-3 pt-2 font-ubuntu">
+                    {{
+                      'Listings included in the  product sales performance were indentified using:'
+                    }}
+                  </p>
+                  <div class="px-3 py-4 flex" v-if="showAdvanceFilter">
+                    <div
+                      class="mr-5 font-ubuntu text-size-16px flex items-center"
+                    >
+                      <input type="checkbox" class="mr-2" />
+                      {{ 'Product Barcodes' }}
+                    </div>
+                    <div
+                      class="mr-5 font-ubuntu text-size-16px flex items-center"
+                    >
+                      <input type="checkbox" class="mr-2" />
+                      {{ 'Keywords filtered by Algopix Algorithm' }}
+                    </div>
+                    <div
+                      class="mr-5 font-ubuntu text-size-16px flex items-center"
+                    >
+                      <input type="checkbox" class="mr-2" />
+                      {{ 'All Keywords' }}
+                    </div>
+                    <div
+                      class="mr-5 font-ubuntu text-size-16px flex items-center"
+                    >
+                      <button
+                        class="px-5 py-2 bg-blue-400 text-white font-ubuntu"
+                      >
+                        {{ 'APPLY' }}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex justify-between py-4 font-ubuntu">
+                  <div class="w-30p border border-gray-200 p-3">
+                    <span class="text-gray-400">{{ 'Number of Sellers' }}</span>
+                    <h2 class="text-size-27px">{{ '1' }}</h2>
+                  </div>
+                  <div class="w-30p border border-gray-200 p-3">
+                    <span class="text-gray-400">{{ 'Price Range' }}</span>
+                    <h2 class="text-size-27px">{{ '$534.99' }}</h2>
+                  </div>
+                  <div class="w-30p border border-gray-200 p-3">
+                    <span class="text-gray-400">{{ 'Average Price' }}</span>
+                    <h2 class="text-size-27px">{{ '$534.99' }}</h2>
+                  </div>
+                </div>
+                <div class="w-full text-right px-3">
+                  <span
+                    @click="openSalesBreakDownModal"
+                    class="text-blue-400 cursor-pointer"
+                    >{{ 'View Sales Breakdown' }}</span
+                  >
+                </div>
+              </td>
+            </tr>
+          </template>
+          <tr class="cursor-pointer">
+            <td class="w-50p pt-5 font-ubuntu-medium text-size-22px text-right">
+              TOTAL
+            </td>
+            <td class="w-20p pt-5 font-ubuntu-medium text-size-22px text-right">
+              {{ '5 Units or less' }}
+            </td>
+            <td class="w-20p pt-5 font-ubuntu-medium text-size-22px text-right">
+              {{ '$300' }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="bottom-chart mt-5">
-      <div class="flex w-full">
-        <div class="w-full lg:w-1/2 flex flex-col">
-          <span>{{ 'Amazon' }}</span>
-          <span class="mb-2">{{ '$300' }}</span>
-          <img :src="bottomChart" class="w-70p" />
-        </div>
-        <div class="w-full lg:w-1/2 flex items-center justify-end">
-          <div class="how-do-we p-5 w-80p">
-            <div class="mb-2">
-              <strong class="font-ubuntu-medium">{{
-                'How do we calculate this data?'
-              }}</strong>
-            </div>
-            <p class="font-ubuntu text-size-15px">
-              {{
-                "Algopix's Sales Estimator algorithm combines product data, including real-time transactions and open source information, to estimate product sales on eBay and Amazon marketplaces. Find out more about the Algopix Sales Estimator"
-              }}
-              <a href="" class="font-ubuntu text-primary text-size-15px">{{
-                'here.'
-              }}</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- MODAL HERE -->
-    <div class="custom-modal fixed" ref="modal">
-      <div class="custom-modal-body" red="modal-body">
-        <div class="flex justify-between items-center">
-          <h1 class="text-size-27px font-ubuntu-medium">{{ '' }}</h1>
-          <i class="icon-x font-bold" @click="closeModal"></i>
-        </div>
-        <div class="content py-3">
-          <iframe
-            width="100%"
-            height="450"
-            src="https://www.youtube.com/embed/NoZ7q_3yemg"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
-        </div>
-      </div>
-    </div>
+    <ModalWrapper
+      :title="salesBreakDownModal ? 'Sales Breakdown' : ''"
+      :width="salesBreakDownModal ? 'w-80p' : 'w-40p'"
+    >
+      <SalesBreakDownTable v-if="salesBreakDownModal" />
+      <iframe
+        v-if="youtubeModal"
+        width="100%"
+        height="315"
+        src="https://www.youtube.com/embed/NoZ7q_3yemg"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </ModalWrapper>
   </div>
 </template>
 <script>
@@ -127,6 +197,9 @@ import amazonIcon from '@/assets/images/amazon.svg'
 import walmartIcon from '@/assets/images/walmart.svg'
 import bottomChart from '@/assets/images/bottom-chart.svg'
 import youtubeIcon from '@/assets/images/youtube.svg'
+import ModalWrapper from '@/components/modals/Wrapper'
+import chevronDown from '@/assets/images/chevron-down.svg'
+import SalesBreakDownTable from '@/components/pages/home/SalesBreakDownTable'
 export default {
   data() {
     return {
@@ -135,40 +208,69 @@ export default {
       walmartIcon,
       bottomChart,
       youtubeIcon,
+      chevronDown,
       list: [
         {
           id: 1,
-          value1: 'Amazon US',
-          value2: '35',
-          value3: '$300'
+          value1: 'eBay US',
+          value2: '5 Units or less',
+          value3: 'Less than $500'
         },
         {
           id: 2,
-          value1: 'eBay US',
+          value1: 'Amazon US',
           value2: "Couldn't find listings that produced sales",
           value3: ''
         },
         {
           id: 3,
-          value1: 'Walmart US',
+          value1: 'Walmart US	',
           value2: '',
           value3: 'Data unavailable because the market price could not be found'
         }
-      ]
+      ],
+      opened: [],
+      showAdvanceFilter: false,
+      salesBreakDownModal: false,
+      youtubeModal: false
     }
   },
   mounted() {},
   components: {
-    QuestionMark
+    QuestionMark,
+    ModalWrapper,
+    SalesBreakDownTable
   },
   methods: {
-    openModal() {
-      this.$refs['modal'].style.zIndex = 10
-      this.$refs['modal-body'].style.zIndex = 10
+    openSalesBreakDownModal() {
+      this.youtubeModal = false
+      this.salesBreakDownModal = true
+      this.$eventBus.$emit('open-modal')
     },
-    closeModal() {
-      this.$refs['modal'].style.zIndex = -1
-      this.$refs['modal-body'].style.zIndex = -1
+    openYoutubeModal() {
+      this.salesBreakDownModal = false
+      this.youtubeModal = true
+      this.$eventBus.$emit('open-modal')
+    },
+    toggleAdvanceFilter() {
+      this.showAdvanceFilter = this.showAdvanceFilter ? false : true
+    },
+    toggle(id) {
+      let rowIcon = document.getElementById(`row-${id}`)
+      const index = this.opened.indexOf(id)
+      if (index > -1) {
+        this.opened.splice(index, 1)
+        if (rowIcon.classList.contains('icon-minus')) {
+          rowIcon.classList.remove('icon-minus')
+          rowIcon.classList.add('icon-plus')
+        }
+      } else {
+        if (rowIcon.classList.contains('icon-plus')) {
+          rowIcon.classList.remove('icon-plus')
+          rowIcon.classList.add('icon-minus')
+        }
+        this.opened.push(id)
+      }
     }
   }
 }
@@ -190,4 +292,58 @@ export default {
 .custom-modal-body
   z-index: -1
   @apply #{bg-white w-50p p-5}
+
+.tabset > input[type="radio"]
+  position: absolute
+  left: -200vw
+.tabset .tab-panel
+  display: none
+.tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+.tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+.tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+.tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+.tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+.tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6)
+  display: block
+.tabset > label
+  position: relative
+  display: inline-block
+  padding: 10px 20px
+  border: 1px solid transparent
+  border-bottom: 0
+  cursor: pointer
+  font-weight: 600
+  &:hover,
+  .tabset > input:focus + label
+    color: #06c
+  &:hover::after,
+  .tabset > input:focus + label::after,
+  .tabset > input:checked + label::after
+    background: #06c
+.tabset > input:checked + label
+  border-color: #ccc
+  border-bottom: 1px solid #fff
+  margin-bottom: -1px
+  border-top: 5px solid #4A90E2
+.tab-panel
+  padding: 30px 0
+  border-top: 1px solid #ccc
+*,*:before,*:after
+  box-sizing: border-box
+table
+  border-collapse: separate
+  border-spacing: 0 1em
+.btn-expand
+  outline: none !important
+.total-expense
+  margin-left: 13px
+
+.details,
+.show,
+.hide:target
+  display: none
+
+.hide:target + .show,
+.hide:target ~ .details
+  display: block
 </style>

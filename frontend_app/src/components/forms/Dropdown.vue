@@ -8,8 +8,8 @@
           >{{ label }}</label
         >
       </div>
-      <div>
-        <QuestionMark text="test tooltip here" color="white" />
+      <div v-if="hasTooltip">
+        <QuestionMark :text="tooltipText" color="white" />
       </div>
     </div>
     <div class="custom-dropdown">
@@ -66,6 +66,13 @@ export default {
     id: {
       type: String,
       required: true
+    },
+    hasTooltip: {
+      type: Boolean,
+      default: true
+    },
+    tooltipText: {
+      type: String
     }
   },
   mounted() {

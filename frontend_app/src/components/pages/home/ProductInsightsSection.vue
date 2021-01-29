@@ -1,50 +1,55 @@
 <template>
   <div class="container bg-white p-5">
-    <h1 class="text-primary font-ubuntu text-size-29px">
+    <h1 class="text-blue-400 font-ubuntu text-size-29px">
       {{ 'Product Insights Across Selected Markets' }}
     </h1>
     <table class="w-full my-3">
       <thead>
         <tr>
-          <th>
+          <th class="w-30p">
             <div class="flex items-center">
-              <span class="font-ubuntu">{{ 'Marketplace' }}</span
+              <span class="font-ubuntu text-size-14px">{{ 'Marketplace' }}</span
               ><i class="icon-briefcase ml-2"></i>
             </div>
           </th>
-          <th>
-            <div class="flex items-center">
-              <span class="font-ubuntu">{{ 'Market Price' }}</span
-              ><i class="icon-chevron-down ml-2"></i>
+          <th class="w-10p">
+            <div class="flex items-center justify-start">
+              <span class="font-ubuntu text-size-14px">{{
+                'Market Price'
+              }}</span
+              ><i class="icon-chevron-down"></i>
             </div>
           </th>
-          <th>
-            <div class="flex items-center">
-              <span class="font-ubuntu">{{ 'Expenses' }}</span
-              ><i class="icon-chevron-down ml-2"></i>
+          <th class="w-10p">
+            <div class="flex items-center justify-start">
+              <span class="font-ubuntu text-size-14px">{{ 'Expenses' }}</span
+              ><i class="icon-chevron-down"></i>
             </div>
           </th>
-          <th>
-            <div class="flex items-center">
-              <span class="font-ubuntu">{{ 'Profit' }}</span
-              ><i class="icon-chevron-down ml-2"></i>
+          <th class="w-10p">
+            <div class="flex items-center justify-start">
+              <span class="font-ubuntu text-size-14px">{{ 'Profit' }}</span
+              ><i class="icon-chevron-down"></i>
             </div>
           </th>
-          <th>
-            <div class="flex items-center">
-              <span class="font-ubuntu">{{ 'Competition ' }} </span
-              ><i class="icon-chevron-down ml-2"></i>
+          <th class="w-10p">
+            <div class="flex items-center justify-start">
+              <span class="font-ubuntu text-size-14px"
+                >{{ 'Competition ' }} </span
+              ><i class="icon-chevron-down"></i>
             </div>
           </th>
-          <th>
-            <div class="flex items-center">
-              <span class="font-ubuntu">{{ 'Demand' }}</span
-              ><i class="icon-chevron-down ml-2"></i>
+          <th class="w-10p">
+            <div class="flex items-center justify-start">
+              <span class="font-ubuntu text-size-14px">{{ 'Demand' }}</span
+              ><i class="icon-chevron-down"></i>
             </div>
           </th>
-          <th>
-            <div class="flex items-center">
-              <span class="font-ubuntu">{{ 'Recommendation' }}</span
+          <th class="w-20p">
+            <div class="flex items-center justify-end">
+              <span class="font-ubuntu text-size-14px">{{
+                'Recommendation'
+              }}</span
               ><i class="icon-chevron-down ml-2"></i>
             </div>
           </th>
@@ -57,7 +62,7 @@
               <div class="flex items-center">
                 <button
                   @click="toggle(item.id)"
-                  class="bg-primary p-3 mr-3 font-bold text-white btn-expand"
+                  class="bg-blue-400 p-3 mr-3 font-bold text-white btn-expand"
                 >
                   <i class="icon-plus" :id="`row-${item.id}`"></i>
                 </button>
@@ -65,24 +70,43 @@
                 {{ item.marketPlace }}
               </div>
             </td>
-            <td class="bg-gray-100 py-2 font-ubuntu">{{ item.marketPrice }}</td>
-            <td class="bg-gray-100 py-2 font-ubuntu">{{ item.expenses }}</td>
-            <td class="bg-gray-100 py-2 font-ubuntu">{{ item.profit }}</td>
-            <td class="bg-gray-100 py-2 font-ubuntu">{{ item.competition }}</td>
-            <td class="bg-gray-100 py-2 font-ubuntu">{{ item.demand }}</td>
+            <td class="bg-gray-100 py-2 font-ubuntu text-start">
+              {{ item.marketPrice }}
+            </td>
+            <td class="bg-gray-100 py-2 font-ubuntu text-start">
+              {{ item.expenses }}
+            </td>
+            <td class="bg-gray-100 py-2 font-ubuntu text-start">
+              {{ item.profit }}
+            </td>
+            <td class="bg-gray-100 py-2 font-ubuntu text-start">
+              {{ item.competition }}
+            </td>
+            <td class="bg-gray-100 py-2 font-ubuntu text-start">
+              {{ item.demand }}
+            </td>
             <td
               class="bg-gray-100 py-2 font-ubuntu"
-              :class="[item.isRecommended ? 'bg-green-400' : '']"
+              :class="[item.isRecommended ? 'bg-green-400' : 'bg-gray-200']"
             >
-              <div class="flex items-center justify-center font-ubuntu">
-                <i class="icon-plus font-bold mr-2"></i>
-                {{
-                  item.isRecommended ? 'Recommendation' : 'Not Recommendation'
-                }}
+              <div class="flex flex-col items-end mr-6 font-ubuntu">
+                <div class="flex">
+                  <div class="pr-2">
+                    <span class="bg-blue-400 text-white rounded ml-3"
+                      ><i class="font-bold icon-plus"></i
+                    ></span>
+                  </div>
+                  <div>
+                    {{ item.isRecommended ? 'Recommended' : 'Not Recommended' }}
+                  </div>
+                </div>
+                <p
+                  v-if="!item.isRecommended"
+                  class="text-center text-size-11px"
+                >
+                  {{ 'Demand is low' }}
+                </p>
               </div>
-              <p v-if="!item.isRecommended" class="text-center text-size-11px">
-                {{ 'Demand is low' }}
-              </p>
             </td>
           </tr>
           <tr v-if="opened.includes(item.id)">
@@ -139,7 +163,7 @@
           </tr>
         </template>
         <tr>
-          <td colspan="7" class="border-b border-gray-400 pb-3">
+          <td colspan="7" class="pb-10 pt-6">
             <span class="font-ubuntu text-size-17px">{{
               'We were unable to find this product on: Walmart US'
             }}</span>

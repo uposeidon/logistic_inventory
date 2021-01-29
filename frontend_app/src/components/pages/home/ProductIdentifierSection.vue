@@ -8,13 +8,13 @@
         <Dropdown
           label="Identifying Type"
           value="ASIN"
-          :options="['test 1', 'test 2', 'test 3']"
+          :options="['ASIN', 'UPC', 'Keywords']"
           @update-value="getProductIdentifier"
           id="product-identifier-type"
         />
       </div>
       <div class="lg:w-5p flex flex-col justify-end">
-        <button class="bg-primary search-btn">
+        <button class="bg-blue-400 search-btn">
           <i class="icon-search"></i>
         </button>
       </div>
