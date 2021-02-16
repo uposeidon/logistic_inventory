@@ -6,9 +6,11 @@ type this command to install node sass
 2. npm run serve
 3. go to http://localhost:8080/ in your browser
 ```
-### Compiles and minifies for production
+### production build
 ```
-npm run build
+1. npm run build
+2. go to dist folder
+3. copy all the files and upload it to the server
 ```
 
 ### Lints and fixes files
