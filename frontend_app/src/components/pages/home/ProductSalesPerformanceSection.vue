@@ -138,15 +138,15 @@
                 <div class="flex justify-between py-4 font-ubuntu">
                   <div class="w-30p border border-gray-200 p-3">
                     <span class="text-gray-400">{{ 'Number of Sellers' }}</span>
-                    <h2 class="text-size-27px">{{ '1' }}</h2>
+                    <span class="text-size-27px block">{{ '1' }}</span>
                   </div>
                   <div class="w-30p border border-gray-200 p-3">
                     <span class="text-gray-400">{{ 'Price Range' }}</span>
-                    <h2 class="text-size-27px">{{ '$534.99' }}</h2>
+                    <span class="text-size-27px block">{{ '$534.99' }}</span>
                   </div>
                   <div class="w-30p border border-gray-200 p-3">
                     <span class="text-gray-400">{{ 'Average Price' }}</span>
-                    <h2 class="text-size-27px">{{ '$534.99' }}</h2>
+                    <span class="text-size-27px block">{{ '$534.99' }}</span>
                   </div>
                 </div>
                 <div class="w-full text-right px-3">
@@ -160,18 +160,47 @@
             </tr>
           </template>
           <tr class="cursor-pointer">
-            <td class="w-50p pt-5 font-ubuntu-medium text-size-22px text-right">
+            <td class="w-50p py-2 font-ubuntu-medium text-size-22px text-right">
               TOTAL
             </td>
-            <td class="w-20p pt-5 font-ubuntu-medium text-size-22px text-right">
-              {{ '5 Units or less' }}
+            <td class="w-20p py-2 font-ubuntu-medium text-size-22px text-right">
+              {{ '33' }}
             </td>
-            <td class="w-20p pt-5 font-ubuntu-medium text-size-22px text-right">
+            <td class="w-20p py-2 font-ubuntu-medium text-size-22px text-right">
               {{ '$300' }}
             </td>
           </tr>
         </tbody>
       </table>
+      <div class="bottom-chart mt-5">
+        <div class="flex w-full">
+          <div class="w-full lg:w-1/2 flex flex-col">
+            <span>{{ 'Amazon' }}</span>
+            <span class="mb-2">{{ '$300' }}</span>
+            <img :src="bottomChart" class="w-70p" />
+            <h2>
+              <span>{{ '$300' }}</span>
+            </h2>
+          </div>
+          <div class="w-full lg:w-1/2 flex items-center justify-end">
+            <div class="how-do-we p-5 w-80p">
+              <div class="mb-2">
+                <strong class="font-ubuntu-medium">{{
+                  'How do we calculate this data?'
+                }}</strong>
+              </div>
+              <p class="font-ubuntu text-size-15px">
+                {{
+                  "Algopix's Sales Estimator algorithm combines product data, including real-time transactions and open source information, to estimate product sales on eBay and Amazon marketplaces. Find out more about the Algopix Sales Estimator"
+                }}
+                <a href="" class="font-ubuntu text-primary text-size-15px">{{
+                  'here.'
+                }}</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <ModalWrapper
       :title="salesBreakDownModal ? 'Sales Breakdown' : ''"
@@ -346,4 +375,15 @@ table
 .hide:target + .show,
 .hide:target ~ .details
   display: block
+
+h2
+  width: 100%
+  text-align: center
+  border-bottom: 1px solid #000
+  line-height: 0.1em
+  margin: 60px 0 20px
+  span
+    background: #fff
+    padding: 0 10px
+    @apply #{text-size-18px font-ubuntu-medium}
 </style>

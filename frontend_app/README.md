@@ -1,15 +1,11 @@
-# frontend_app
-
-## Project setup
+# run frontend_app locally
 ```
-npm install
+got to the frontend_app directory in the terminal
+type this command to install node sass
+1. npm install
+2. npm run serve
+3. go to http://localhost:8080/ in your browser
 ```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
 ### Compiles and minifies for production
 ```
 npm run build
